@@ -5,6 +5,8 @@
  * Return: always 0
  */
 
+extern char **environ;
+
 int main(void)
 {
 	char *input = NULL;
@@ -29,6 +31,7 @@ int main(void)
 	/* remove new line char */
 	input[strcspn(input, "\n")] = '\0';
 
+
 	/* forl a child procces */
 	pid_t pid = fork();
 	if (pid == -1)
@@ -39,14 +42,23 @@ int main(void)
 	else if (pid == 0)
 	{
 		/* Execute the command using execve */
-		char *args[] = {input, NULL};
-		char *envp[] = {NULL};
+		char *token = strtok(input, " ");
+		char *command = token;
+		char *args[256] = {command};
+		int arg_count = 1;
+		while ((token = strtok(NULL, " ")) != NULL)
+		{
+			args[arg_count] = token;
+			arg_count++;
+		}
+		args[arg_count] = NULL;
+
 		if (stat(input, &s) != 0)
 		{
 			printf("No such file or directory\n");
 			exit(EXIT_FAILURE);
 		}
-		execve(input, args, envp);
+		execve(input, args, environ);
 		exit(EXIT_FAILURE);
 	}
 	else
