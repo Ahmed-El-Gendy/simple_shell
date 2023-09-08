@@ -1,11 +1,8 @@
 #include "shell.h"
-
 /**
  * main - The main function of our project
  * Return: always 0
  */
-
-
 int main(void)
 {
 	char *input = NULL;
@@ -19,19 +16,12 @@ int main(void)
 	fflush(stdout);
 	/* Read user input using getline */
 	if (getline(&input, &len, stdin) == -1)
-	{
 		break;
-	}
 	/* Skip processing if the input is empty */
 	if (strlen(input) == 0)
-	{
 		continue;
-	}
-
 	/* remove new line char */
 	input[strcspn(input, "\n")] = '\0';
-
-
 	/* forl a child procces */
 	pid_t pid = fork();
 
@@ -64,9 +54,8 @@ int main(void)
 		exit(EXIT_FAILURE);
 	}
 	else
-	{
 		wait(NULL);
-	}
+
 
 	/* Free the allocated memory for input */
 	free(input);
