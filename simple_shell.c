@@ -50,7 +50,7 @@ int main(void)
 			printf("No such file or directory\n");
 			exit(EXIT_FAILURE);
 		}
-		execve(input, args, environ);
+		execve(command, args, environ);
 		exit(EXIT_FAILURE);
 	}
 	else
