@@ -40,13 +40,13 @@ int main(void)
 	{
 		/* Execute the command using execve */
 		char *args[] = {input, NULL};
-		char *envp[] = {NULL};
+		char *environ[] = {NULL};
 		if (stat(input, &s) != 0)
 		{
 			printf("No such file or directory\n");
 			exit(EXIT_FAILURE);
 		}
-		execve(input, args, envp);
+		execve(input, args, environ);
 		exit(EXIT_FAILURE);
 	}
 	else
