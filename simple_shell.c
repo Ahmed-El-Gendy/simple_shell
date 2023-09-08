@@ -20,7 +20,7 @@ int main(void)
 	/* Read user input using getline */
 	if (getline(&input, &len, stdin) == -1)
 	{
-		printf("\nExiting the shell.\n");
+		printf("Exiting the shell.\n");
 		break;
 	}
 	/* remove new line char */
