@@ -9,6 +9,7 @@ int main(void)
 {
 	char *input = NULL;
 	size_t len = 0;
+	struct stat s;
 
 	while (true)
 	{
@@ -37,8 +38,12 @@ int main(void)
 		/* Execute the command using execve */
 		char *args[] = {input, NULL};
 		char *envp[] = {NULL};
+		if (stat(input, &s) != 0)
+		{
+			printf("No such file or directory\n");
+			exit(EXIT_FAILURE);
+		}
 		execve(input, args, envp);
-		printf("%s\n", input);
 		exit(EXIT_FAILURE);
 	}
 	else
