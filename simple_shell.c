@@ -38,14 +38,13 @@ int main(void)
 		char *args[] = {input, NULL};
 		char *envp[] = {NULL};
 		execve(input, args, envp);
-		/* if fail */
-		perror("execve");
+		printf("%s\n", input);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
 		int status;
-		waitpid(pid, &status, 0);
+		wait(NULL);
 		if (WIFEXITED(status))
 		{
 			int exit_status = WEXITSTATUS(status);
