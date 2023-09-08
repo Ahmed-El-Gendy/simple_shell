@@ -5,7 +5,6 @@
  * Return: always 0
  */
 
-extern char **environ;
 
 int main(void)
 {
@@ -17,14 +16,15 @@ int main(void)
 	{
 	/* To be sure you are in the shell */
 	printf("$ ");
-	fflush(stdout);	
+	fflush(stdout);
 	/* Read user input using getline */
 	if (getline(&input, &len, stdin) == -1)
 	{
 		break;
 	}
 	/* Skip processing if the input is empty */
-	if (strlen(input) == 0) {
+	if (strlen(input) == 0)
+	{
 		continue;
 	}
 
@@ -34,6 +34,7 @@ int main(void)
 
 	/* forl a child procces */
 	pid_t pid = fork();
+
 	if (pid == -1)
 	{
 		perror("fork");
@@ -46,6 +47,7 @@ int main(void)
 		char *command = token;
 		char *args[256] = {command};
 		int arg_count = 1;
+
 		while ((token = strtok(NULL, " ")) != NULL)
 		{
 			args[arg_count] = token;
