@@ -20,10 +20,6 @@ int main(void)
 	/* Read user input using getline */
 	if (getline(&input, &len, stdin) == -1)
 	{
-<<<<<<< HEAD
-=======
-		printf("Exiting the shell.\n");
->>>>>>> 23a064ad00b3c4ba638800da7782cabf634e1b04
 		break;
 	}
 	/* remove new line char */
