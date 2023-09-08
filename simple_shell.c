@@ -11,17 +11,16 @@ int main(void)
 	size_t len = 0;
 	struct stat s;
 
-	while (true)
-	{
-	/* To be sure you are in the shell */
 	printf("$ ");
 	fflush(stdout);
-
+	while (true)
+	{
 	/* Read user input using getline */
 	if (getline(&input, &len, stdin) == -1)
 	{
 		break;
 	}
+
 	/* remove new line char */
 	input[strcspn(input, "\n")] = '\0';
 
@@ -48,6 +47,8 @@ int main(void)
 	else
 	{
 		wait(NULL);
+		printf("$ ");
+		fflush(stdout);
 	}
 
 	/* Free the allocated memory for input */
