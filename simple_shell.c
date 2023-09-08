@@ -20,7 +20,6 @@ int main(void)
 	/* Read user input using getline */
 	if (getline(&input, &len, stdin) == -1)
 	{
-		printf("\nExiting the shell.\n");
 		break;
 	}
 	/* remove new line char */
@@ -48,13 +47,7 @@ int main(void)
 	}
 	else
 	{
-		int status;
 		wait(NULL);
-		if (WIFEXITED(status))
-		{
-			int exit_status = WEXITSTATUS(status);
-			printf("Exit status: %d\n", exit_status);
-		}
 	}
 
 	/* Free the allocated memory for input */
