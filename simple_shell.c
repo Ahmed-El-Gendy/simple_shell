@@ -11,14 +11,19 @@ int main(void)
 	size_t len = 0;
 	struct stat s;
 
-	printf("$ ");
-	fflush(stdout);
 	while (true)
 	{
+	/* To be sure you are in the shell */
+	printf("$ ");
+	fflush(stdout);	
 	/* Read user input using getline */
 	if (getline(&input, &len, stdin) == -1)
 	{
 		break;
+	}
+	/* Skip processing if the input is empty */
+	if (strlen(input) == 0) {
+		continue;
 	}
 
 	/* remove new line char */
@@ -47,8 +52,6 @@ int main(void)
 	else
 	{
 		wait(NULL);
-		printf("$ ");
-		fflush(stdout);
 	}
 
 	/* Free the allocated memory for input */
