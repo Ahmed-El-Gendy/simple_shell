@@ -9,6 +9,7 @@
 #include <string.h>
 #include <sys/stat.h>
 
+extern char **environ;
 int _putchar(char c);
 int _strlen(char *s);
 void _puts(char *str);
