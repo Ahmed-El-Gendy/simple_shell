@@ -11,55 +11,37 @@ int main(void)
 
 	while (true)
 	{
-	/* To be sure you are in the shell */
-	printf("$ ");
+	_puts("Saged$ ");
 	fflush(stdout);
-	/* Read user input using getline */
 	if (getline(&input, &len, stdin) == -1)
 		break;
-	/* Skip processing if the input is empty */
-	if (strlen(input) == 0)
-		continue;
-	/* remove new line char */
 	input[strcspn(input, "\n")] = '\0';
-	/* forl a child procces */
-	pid_t pid = fork();
-	if (pid == -1)
+	if (_strlen(input) == 0)
+		continue;
+	char *token = strtok(input, " "), *command = token, *args[256] = {command};
+	int arg_count = 1;
+
+	while ((token = strtok(NULL, " ")) != NULL)
 	{
-		perror("fork");
-		exit(EXIT_FAILURE);
+		args[arg_count] = token;
+		arg_count++;
 	}
-	else if (pid == 0)
+	args[arg_count] = NULL;
+	if (!getpath(command, _strlen(command)))
 	{
-		/* Execute the command using execve */
-		char *token = strtok(input, " ");
-		char *command = token;
-		char *args[256] = {command};
-		int arg_count = 1;
-
-		while ((token = strtok(NULL, " ")) != NULL)
-		{
-			args[arg_count] = token;
-			arg_count++;
-		}
-		args[arg_count] = NULL;
-
-		if (stat(input, &s) != 0)
-		{
-			printf("No such file or directory\n");
-			exit(EXIT_FAILURE);
-		}
-		execve(command, args, environ);
-		exit(EXIT_FAILURE);
+		_puts("No such file or directory\n");
+		continue;
 	}
 	else
+		command = getpath(command, _strlen(command));
+	if (fork() == 0)
+		execve(command, args, environ);
+	else
 		wait(NULL);
-
-
-	/* Free the allocated memory for input */
-	free(input);
 	input = NULL;
+	command = NULL;
+	token = NULL;
 	}
-
+	free(input);
 	return (0);
 }
