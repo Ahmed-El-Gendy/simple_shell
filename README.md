@@ -11,3 +11,4 @@ stat chech the file is available or not
 getline take the input from user
 saged shell
 header file shell.h
+puts print the string
