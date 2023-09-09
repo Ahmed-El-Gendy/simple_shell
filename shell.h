@@ -9,6 +9,8 @@
 #include <string.h>
 #include <sys/stat.h>
 
+int isfound(char *name);
+char *getpath(char *name, int len);
 extern char **environ;
 int _putchar(char c);
 int _strlen(char *s);
