@@ -17,11 +17,11 @@ int main(void)
 	/* Read user input using getline */
 	if (getline(&input, &len, stdin) == -1)
 		break;
-	/* Skip processing if the input is empty */
-	if (strlen(input) == 0)
-		continue;
 	/* remove new line char */
 	input[strcspn(input, "\n")] = '\0';
+	/* to check if the input is empty */
+	if (_strlen(input) == 0)
+		continue;
 	/* Execute the command using execve */
 	char *token = strtok(input, " ");
 	char *command = token;
@@ -49,22 +49,19 @@ int main(void)
 	pid_t pid = fork();
 	if (pid == -1)
 	{
-		perror("fork");
-		exit(EXIT_FAILURE);
 	}
 	else if (pid == 0)
 	{
 		execve(command, args, environ);
-		exit(EXIT_FAILURE);
 	}
 	else
 		wait(NULL);
 
 
 	/* Free the allocated memory for input */
-	free(input);
 	input = NULL;
 	}
+	free(input);
 
 	return (0);
 }
