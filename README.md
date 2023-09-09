@@ -8,3 +8,5 @@ Ramy Rashad
 "strlen" function to return the lenth of the string
 fork creat anther program 
 stat chech the file is available or not
+getline take the input from user
+`
