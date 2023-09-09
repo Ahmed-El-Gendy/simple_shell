@@ -1,6 +1,7 @@
 #include "shell.h"
 /**
  * main - The main function of our project
+ *
  * Return: always 0
  */
 int main(void)
