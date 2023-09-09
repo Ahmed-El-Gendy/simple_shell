@@ -12,6 +12,8 @@ char *getpath(char *name, int len)
 	char *path;
 	int i;
 
+	if (isfound(name))
+		return (name);
 	 _strcpy(test1, "/bin/");
 	for (i = 5; i <= len + 5; i++)
 	{
