@@ -10,5 +10,6 @@ int isfound(char *name)
 
 	if (stat(name, &st) == 0)
 		return (1);
+
 	return (0);
 }
