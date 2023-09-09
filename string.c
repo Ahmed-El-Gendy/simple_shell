@@ -78,7 +78,6 @@ char *_strcpy(char *dest, char *src)
  * @n: number of bytes
  * Return: string
 */
-
 char *_strncat(char *dest, char *src, int n)
 {
 	int i, j;
