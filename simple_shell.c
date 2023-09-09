@@ -24,7 +24,6 @@ int main(void)
 	input[strcspn(input, "\n")] = '\0';
 	/* forl a child procces */
 	pid_t pid = fork();
-
 	if (pid == -1)
 	{
 		perror("fork");
