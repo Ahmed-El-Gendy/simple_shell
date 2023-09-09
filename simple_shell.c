@@ -38,30 +38,32 @@ int main(void)
 	if (!getpath(command, _strlen(command)))
 	{
 		printf("No such file or directory\n");
-		continue;
+		exit(EXIT_FAILURE);
 	}
 	else
-	{
 		command = getpath(command, _strlen(command));
-	}
 
 	/* forl a child procces */
 	pid_t pid = fork();
+
 	if (pid == -1)
 	{
+		perror("fork");
+		exit(EXIT_FAILURE);
 	}
 	else if (pid == 0)
 	{
 		execve(command, args, environ);
+		exit(EXIT_FAILURE);
 	}
 	else
 		wait(NULL);
 
 
 	/* Free the allocated memory for input */
+	free(input);
 	input = NULL;
 	}
 	free(input);
-
 	return (0);
 }
