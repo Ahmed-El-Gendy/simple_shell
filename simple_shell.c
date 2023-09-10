@@ -12,7 +12,7 @@ int main(void)
 
 	while (true)
 	{
-	_puts("Saged$ ");
+	_puts("saged$ ");
 	fflush(stdout);
 	if (getline(&input, &len, stdin) == -1)
 		break;
