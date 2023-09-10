@@ -11,9 +11,7 @@ void execute(char *command, char **args)
 	if (pid == 0)
 	{
 		execve(command, args, environ);
-		_puts("bash: ");
-		_puts(command);
-		_puts(": command not found\n");
+		_puts("No such file or directory\n");
 		exit(EXIT_FAILURE);
 	}
 	else
