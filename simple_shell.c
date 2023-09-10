@@ -26,6 +26,17 @@ int main(void)
 	char *command = NULL, **args = NULL;
 
 	split(input, &command, &args);
+	while ((token = strtok(NULL, " ")) != NULL)
+	{
+		args[arg_count] = token;
+		arg_count++;
+	}
+	args[arg_count] = NULL;
+	if (cmp(command, "cd"))
+	{
+		change_dir(args[1]);
+		continue;
+	}
 	if (!getpath(command, _strlen(command)))
 	{
 		_puts("No such file or directory\n");

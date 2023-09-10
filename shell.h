@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+void change_dir(char *path);
 int isfound(char *name);
 char *getpath(char *name, int len);
 extern char **environ;
