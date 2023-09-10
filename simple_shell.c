@@ -9,10 +9,12 @@ int main(void)
 	char *input = NULL;
 	size_t len = 0;
 	struct stat s;
+	int check = isatty(STDIN_FILENO);
 
 	while (true)
 	{
-	_puts("saged$ ");
+	if (check)
+		_puts("saged$ ");
 	fflush(stdout);
 	if (getline(&input, &len, stdin) == -1)
 		break;

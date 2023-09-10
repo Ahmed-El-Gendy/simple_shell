@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <fcntl.h>
 
 int isfound(char *name);
 char *getpath(char *name, int len);
