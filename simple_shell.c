@@ -26,16 +26,8 @@ int main(void)
 	char *command = NULL, **args = NULL;
 
 	split(input, &command, &args);
-	if (cmp(command, "cd"))
-	{
-		change_dir(args[1]);
+	if (con(command, args[1]))
 		continue;
-	}
-	if (!getpath(command, _strlen(command)))
-	{
-		_puts("No such file or directory\n");
-		continue;
-	}
 	else
 		command = getpath(command, _strlen(command));
 	if (fork() == 0)

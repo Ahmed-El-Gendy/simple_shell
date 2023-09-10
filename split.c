@@ -2,13 +2,13 @@
 
 /**
  * split - to split the input to command and args
- * @token: command
+ * @input: command
  * @command: command
  * @args: arguments
- * @arg_count: the args counter
  * Return: void
  */
-void split(char *input, char **command, char ***args) {
+void split(char *input, char **command, char ***args)
+{
 	int arg_count;
 	char *token = strtok(input, " ");
 
@@ -16,7 +16,8 @@ void split(char *input, char **command, char ***args) {
 	*args = (char **)malloc(sizeof(char *) * 256);
 	(*args)[0] = *command;
 	arg_count = 1;
-	while ((token = strtok(NULL, " ")) != NULL) {
+	while ((token = strtok(NULL, " ")) != NULL)
+	{
 		(*args)[arg_count] = token;
 		arg_count++;
 	}
