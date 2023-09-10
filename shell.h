@@ -13,6 +13,7 @@
 int isfound(char *name);
 char *getpath(char *name, int len);
 extern char **environ;
+void split(char *input, char **command, char ***args);
 int _putchar(char c);
 int _strlen(char *s);
 void _puts(char *str);

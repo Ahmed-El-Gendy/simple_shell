@@ -23,15 +23,9 @@ int main(void)
 		continue;
 	if (cmp(input, "exit"))
 		break;
-	char *token = strtok(input, " "), *command = token, *args[256] = {command};
-	int arg_count = 1;
+	char *command = NULL, **args = NULL;
 
-	while ((token = strtok(NULL, " ")) != NULL)
-	{
-		args[arg_count] = token;
-		arg_count++;
-	}
-	args[arg_count] = NULL;
+	split(input, &command, &args);
 	if (!getpath(command, _strlen(command)))
 	{
 		_puts("No such file or directory\n");
@@ -45,7 +39,6 @@ int main(void)
 		wait(NULL);
 	input = NULL;
 	command = NULL;
-	token = NULL;
 	}
 	free(input);
 	return (0);
