@@ -19,6 +19,8 @@ int main(void)
 	input[strcspn(input, "\n")] = '\0';
 	if (_strlen(input) == 0)
 		continue;
+	if (cmp(input, "exit"))
+		break;
 	char *token = strtok(input, " "), *command = token, *args[256] = {command};
 	int arg_count = 1;
 

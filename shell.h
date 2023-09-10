@@ -17,4 +17,5 @@ int _strlen(char *s);
 void _puts(char *str);
 char *_strcpy(char *dest, char *src);
 char *_strncat(char *dest, char *src, int n);
+int cmp(char *input1, char *input2);
 #endif
