@@ -21,10 +21,12 @@ void split(char *input, char **command, char ***args)
 	}
 
 	*command = token;
-	if (cmp(input, "echo"))
+	if (cmp(*command, "echo"))
 	{
-		handle_echo(input, args);
-		return;
+		if(!handle_echo(input, command, args))
+			return;
+		else
+			*args = NULL;
 	}
 	*args = (char **)malloc(sizeof(char *) * 256);
 	(*args)[0] = *command;

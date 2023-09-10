@@ -9,6 +9,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+int handle_echo(char *input, char **command, char ***args);
 int rep(char **input);
 void change_dir(char *path);
 int isfound(char *name);
