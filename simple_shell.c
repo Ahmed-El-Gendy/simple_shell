@@ -32,6 +32,11 @@ int main(void)
 		arg_count++;
 	}
 	args[arg_count] = NULL;
+	if (cmp(command, "cd"))
+	{
+		change_dir(args[1]);
+		continue;
+	}
 	if (!getpath(command, _strlen(command)))
 	{
 		_puts("No such file or directory\n");
