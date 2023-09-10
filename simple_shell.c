@@ -30,10 +30,7 @@ int main(void)
 		continue;
 	else
 		command = getpath(command, _strlen(command));
-	if (fork() == 0)
-		execve(command, args, environ);
-	else
-		wait(NULL);
+	execute(command, args);
 	input = NULL;
 	command = NULL;
 	}
