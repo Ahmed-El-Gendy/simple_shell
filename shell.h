@@ -9,7 +9,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-
+int rep(char **input);
 void change_dir(char *path);
 int isfound(char *name);
 char *getpath(char *name, int len);
