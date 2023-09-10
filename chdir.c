@@ -7,5 +7,5 @@
 void change_dir(char *path)
 {
 	if (chdir(path) != 0)
-		_puts("no such file or directory\n");
+		_puts("No such file or directory\n");
 }
