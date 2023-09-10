@@ -26,12 +26,6 @@ int main(void)
 	char *command = NULL, **args = NULL;
 
 	split(input, &command, &args);
-	while ((token = strtok(NULL, " ")) != NULL)
-	{
-		args[arg_count] = token;
-		arg_count++;
-	}
-	args[arg_count] = NULL;
 	if (cmp(command, "cd"))
 	{
 		change_dir(args[1]);
