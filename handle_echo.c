@@ -3,6 +3,7 @@
 /**
  * handle_echo - handle echo case
  * @input: string
+ * @command: command
  * @args: arguments
  * Return: 1 or 0
  */
@@ -12,22 +13,22 @@ int handle_echo(char *input, char **command, char ***args)
 	int arg_count, i, co = 0, j, le, k;
 	char *token = NULL, is;
 
-	for (i = 0; input[i] == ' '; i++);
-	for (co = i; input[co] != ' ' && input[co] != '\0'; co++);
-	/*token = malloc(sizeof(char) * co);
-	for (j = 0; i < co; i++, j++)
-		token[j] = input[i];
-	*command = token;*/
+	for (i = 0; input[i] == ' '; i++)
+		;
+	for (co = i; input[co] != ' ' && input[co] != '\0'; co++)
+		;
 	*args = (char **)malloc(sizeof(char *) * 2);
 	(*args)[0] = *command;
-	for (i = co; input[i] == ' ' && input[i] != '\0'; i++);
+	for (i = co; input[i] == ' ' && input[i] != '\0'; i++)
+		;
 	if (input[i] == '\0')
 		return (1);
 	is = input[i];
 	if (is == '\'' || is == '\"')
 	{
 		le = _strlen(input);
-		for (le = le - 1; input[le] == ' '; le--);
+		for (le = le - 1; input[le] == ' '; le--)
+			;
 		if (le == i)
 			return (1);
 		if (input[le] == is)
