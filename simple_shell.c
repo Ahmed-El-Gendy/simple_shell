@@ -13,6 +13,7 @@ int main(void)
 
 	while (true)
 	{
+	input = NULL;
 	if (check)
 		_puts("saged$ ");
 	fflush(stdout);
@@ -31,8 +32,6 @@ int main(void)
 	else
 		command = getpath(command, _strlen(command));
 	execute(command, args);
-	input = NULL;
-	command = NULL;
 	}
 	free(input);
 	return (0);
