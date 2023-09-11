@@ -18,6 +18,7 @@ extern char **environ;
 int con(char *command, char *args);
 void split(char *input, char **command, char ***args);
 int _putchar(char c);
+int convert(char ***args, int *res);
 void execute(char *command, char **args);
 int _strlen(char *s);
 void _puts(char *str);

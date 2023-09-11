@@ -22,11 +22,17 @@ int main(void)
 			break;
 		if (rep(&input))
 			continue;
-		if (cmp(input, "exit"))
-			break;
 		char *command = NULL, **args = NULL;
 
 		split(input, &command, &args);
+		if (cmp(command, "exit"))
+		{
+			int k;
+
+			if (!convert(&args, &k))
+				break;
+			exit(k);
+		}
 		if (con(command, args[1]))
 			continue;
 		else
