@@ -30,7 +30,7 @@ int main(void)
 			int k;
 
 			if (!convert(&args, &k))
-				break;
+				exit(0);
 			exit(k);
 		}
 		if (con(&command, &args[1]))

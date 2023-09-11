@@ -8,6 +8,18 @@
  */
 int con(char **command, char **args)
 {
+	char **env;
+
+	if (cmp(*command, "env"))
+	{
+		env = environ;
+		for ( ; *env != NULL; env++)
+		{
+			_puts(*env);
+			_putchar('\n');
+		}
+		return (1);
+	}
 	if (cmp(*command, "cd"))
 	{
 		change_dir(args);
