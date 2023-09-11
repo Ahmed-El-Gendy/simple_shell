@@ -4,8 +4,15 @@
  * @path: path of the dir
  * Return: nothing
  */
-void change_dir(char *path)
+void change_dir(char **path)
 {
-	if (chdir(path) != 0)
+	if (*path == NULL)
+	{
+		char *home = getenv("HOME");
+		chdir(home);
+	}
+	else if (cmp(*path, "-"))
+		chdir("..");
+	else if (chdir(*path) != 0)
 		_puts("No such file or directory\n");
 }

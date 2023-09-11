@@ -33,7 +33,7 @@ int main(void)
 				break;
 			exit(k);
 		}
-		if (con(command, args[1]))
+		if (con(&command, &args[1]))
 			continue;
 		else
 			command = getpath(command, _strlen(command));
