@@ -34,7 +34,10 @@ void comma(char *input)
 				exit(k);
 			}
 			if (con(&command, &args[1]))
+			{
+				i = j + 1;
 				continue;
+			}
 			else
 				command = getpath(command, _strlen(command));
 			execute(command, args);
