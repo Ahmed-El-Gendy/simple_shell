@@ -9,6 +9,8 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+void comma(char *input);
+void null_all(char **input, char **command, char ***args);
 int handle_echo(char *input, char **command, char ***args);
 int rep(char **input);
 void change_dir(char **path);

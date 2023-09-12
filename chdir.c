@@ -9,6 +9,7 @@ void change_dir(char **path)
 	if (*path == NULL)
 	{
 		char *home = getenv("HOME");
+
 		chdir(home);
 	}
 	else if (cmp(*path, "-"))

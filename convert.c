@@ -2,6 +2,7 @@
 /**
  * convert - convert string to int
  * @args: array of string
+ * @res: int
  * Return: int
  */
 int convert(char ***args, int *res)

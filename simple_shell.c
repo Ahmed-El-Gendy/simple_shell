@@ -22,22 +22,7 @@ int main(void)
 			break;
 		if (rep(&input))
 			continue;
-		char *command = NULL, **args = NULL;
-
-		split(input, &command, &args);
-		if (cmp(command, "exit"))
-		{
-			int k;
-
-			if (!convert(&args, &k))
-				exit(0);
-			exit(k);
-		}
-		if (con(&command, &args[1]))
-			continue;
-		else
-			command = getpath(command, _strlen(command));
-		execute(command, args);
+		comma(input);
 	}
 	free(input);
 	return (0);
