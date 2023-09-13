@@ -6,23 +6,37 @@
  * @args: args
  * Return: 1 if true 0 if false
  */
-int con(char **command, char **args)
+int con(char **command, char ***args)
 {
 	char **env;
+	int n = len_args(args);
 
+	if (cmp(*command, "setenv") || cmp(*command, "unsetenv"))
+	{
+		handle_env(command,args,n);
+		return (1);
+	}
 	if (cmp(*command, "env"))
 	{
-		env = environ;
-		for ( ; *env != NULL; env++)
+		if (n == 1)
 		{
-			_puts(*env);
-			_putchar('\n');
+			env = environ;
+			for ( ; *env != NULL; env++)
+			{
+				_puts(*env);
+				_putchar('\n');
+			}
+			return (1);
 		}
-		return (1);
 	}
 	if (cmp(*command, "cd"))
 	{
-		change_dir(args);
+		if (n > 2)
+		{
+			_puts("erorr\n");
+			return (1);
+		}
+		change_dir(&(*args)[1]);
 		return (1);
 	}
 	if (!getpath(*command, _strlen(*command)))

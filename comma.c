@@ -33,7 +33,7 @@ void comma(char *input)
 					exit(0);
 				exit(k);
 			}
-			if (con(&command, &args[1]))
+			if (con(&command, &args))
 			{
 				i = j + 1;
 				continue;
