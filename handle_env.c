@@ -1,5 +1,39 @@
 #include "shell.h"
 /**
+ * unset_env - unset
+ * @var: var
+ */
+void unset_env(char *var)
+{
+	int i, j, k = _strlen(var), c = 0;
+	char *check = malloc(sizeof(char) * (k + 1)), *or;
+
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		or = environ[i];
+		for (j = 0; j < k; j++)
+			check[j] = or[j];
+		if (cmp(check, var))
+		{
+			c = 1;
+			break;
+		}
+	}
+	if (c)
+	{
+		for (i = i; environ[i] != NULL; i++)
+			environ[i] = environ[i + 1];
+	}
+	else
+	{
+		_puts("not found\n");
+	}
+	check = NULL;
+	free(check);
+	return;
+}
+
+/**
  * assign_env - assign
  * @var: var
  * @s1: s1
@@ -33,6 +67,7 @@ void assign_env(char **var, char *s1, char *s2)
 void handle_env(char **command, char ***args, int n)
 {
 	char *var;
+	int i;
 
 	if (n == 1)
 		_puts("erorr\n");
@@ -43,16 +78,7 @@ void handle_env(char **command, char ***args, int n)
 			_puts("erorr\n");
 			return;
 		}
-		char *en = getenv((*args)[1]);
-
-		if (en == NULL)
-			_puts("erorr\n");
-		else
-		{
-			var = malloc(sizeof(char) * (_strlen((*args)[1]) + 2));
-			assign_env(&var, (*args)[1], NULL);
-			putenv(var);
-		}
+		unset_env((*args)[1]);
 		return;
 	}
 	else if (n == 3)
@@ -64,7 +90,12 @@ void handle_env(char **command, char ***args, int n)
 		}
 		var = malloc(sizeof(char) * (_strlen((*args)[1]) + _strlen((*args)[2]) + 2));
 		assign_env(&var, (*args)[1], (*args)[2]);
-		putenv(var);
+		for (i = 0; environ[i] != NULL; i++)
+			;
+		environ[i] = var;
+		environ[i + 1] = NULL;
+		var = NULL;
+		free(var);
 		return;
 	}
 	else
