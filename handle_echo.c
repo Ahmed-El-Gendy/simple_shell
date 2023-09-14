@@ -38,6 +38,8 @@ int handle_echo(char *input, char **command, char ***args)
 			for (j = i + 1, k = 0; j < le; j++, k++)
 				st[k] = input[j];
 			(*args)[1] = st;
+			st = NULL;
+			free(st);
 			return (0);
 		}
 		else

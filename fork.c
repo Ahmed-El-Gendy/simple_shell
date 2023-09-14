@@ -18,5 +18,7 @@ void execute(char *command, char **args)
 	else
 	{
 		wait(NULL);
+		args = NULL;
+		free(args);
 	}
 }

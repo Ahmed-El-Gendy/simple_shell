@@ -25,6 +25,7 @@ void comma(char *input)
 			for (k = 0; i < j; i++, k++)
 				input2[k] = input[i];
 			split(input2, &command, &args);
+			free(input2);
 			if (cmp(command, "exit"))
 			{
 				int k;

@@ -20,6 +20,8 @@ void split(char *input, char **command, char ***args)
 	for (j = 0; i < co; i++, j++)
 		token[j] = input[i];
 	*command = token;
+	token = NULL;
+	free(token);
 	if (cmp(*command, "echo"))
 	{
 		if (!handle_echo(input, command, args))
@@ -47,4 +49,6 @@ void split(char *input, char **command, char ***args)
 	}
 
 	(*args)[arg_count] = NULL;
+	token = NULL;
+	free(token);
 }
