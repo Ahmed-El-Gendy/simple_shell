@@ -9,7 +9,7 @@ char *getpath(char *name, int len)
 {
 	char test1[len + 5];
 	char test2[len + 9];
-	char *path;
+	char *path, *fre;
 	int i;
 
 	if (isfound(name))
@@ -26,7 +26,10 @@ char *getpath(char *name, int len)
 			return (NULL);
 		for (i = 0; test1[i] != '\0'; i++)
 			path[i] = test1[i];
-		return (path);
+		fre = path;
+		path = NULL;
+		free(path);
+		return (fre);
 	}
 	_strcpy(test2, "/usr/bin/");
 	for (i = 9; i <= 9 + len; i++)
@@ -38,7 +41,10 @@ char *getpath(char *name, int len)
 			return (NULL);
 		for (i = 0; test2[i] != '\0'; i++)
 			path[i] = test2[i];
-		return (path);
+		fre = path;
+		path = NULL;
+		free(path);
+		return (fre);
 	}
 	return (NULL);
 }
