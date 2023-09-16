@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	char *input = NULL;
+	char *input = NULL, *command, **args;
 	size_t len = 0;
 	struct stat s;
 	int check = isatty(STDIN_FILENO);
@@ -20,9 +20,9 @@ int main(void)
 			_puts("saged$ ");
 		if (getline(&input, &len, stdin) == -1)
 			break;
-		if (rep(&input))
+		if (rep(input))
 			continue;
-		comma(input);
+		comma(input, command, args);
 	}
 	free(input);
 	return (0);

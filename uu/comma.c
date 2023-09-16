@@ -5,9 +5,9 @@
  * @input: the input
  * Return: void
  */
-void comma(char *input)
+void comma(char *input, char *command, char **args)
 {
-	char *command = NULL, **args = NULL, *input2 = NULL;
+	char *input2;
 	int i = 0, j = 0, k = 0;
 
 	for (j = 0; ; j++)
@@ -21,9 +21,10 @@ void comma(char *input)
 					break;
 				continue;
 			}
-			input2 = malloc(sizeof(char) * (j - i));
+			input2 = malloc(sizeof(char) * ((j - i) + 1));
 			for (k = 0; i < j; i++, k++)
 				input2[k] = input[i];
+			input2[k] = '\0';
 			split(input2, &command, &args);
 			free(input2);
 			if (cmp(command, "exit"))
@@ -36,13 +37,14 @@ void comma(char *input)
 			}
 			if (con(&command, &args))
 			{
+				fre(command, args);
 				i = j + 1;
 				continue;
 			}
 			else
 				command = getpath(command, _strlen(command));
 			execute(command, args);
-			null_all(&input2, &command, &args);
+			fre(command, args);
 			i = j + 1;
 		}
 		if (input[j] == '\0')

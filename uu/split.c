@@ -26,7 +26,7 @@ void split(char *input, char **command, char ***args)
 	{
 		if (!handle_echo(input, command, args))
 			return;
-		*args = NULL;
+		args = NULL;
 	}
 	*args = (char **)malloc(sizeof(char *) * 256)
 		;
@@ -47,8 +47,4 @@ void split(char *input, char **command, char ***args)
 		(*args)[arg_count] = token;
 		arg_count++;
 	}
-
-	(*args)[arg_count] = NULL;
-	token = NULL;
-	free(token);
 }
