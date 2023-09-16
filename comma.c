@@ -7,7 +7,7 @@
  */
 void comma(char *input, char *command, char **args)
 {
-	char *input2 = NULL;
+	char *input2;
 	int i = 0, j = 0, k = 0;
 
 	for (j = 0; ; j++)
@@ -21,13 +21,12 @@ void comma(char *input, char *command, char **args)
 					break;
 				continue;
 			}
-			free(input2);
-			input2 = NULL;
 			input2 = malloc(sizeof(char) * ((j - i) + 1));
 			for (k = 0; i < j; i++, k++)
 				input2[k] = input[i];
 			input2[k] = '\0';
 			split(input2, &command, &args);
+			free(input2);
 			if (cmp(command, "exit"))
 			{
 				int k;
