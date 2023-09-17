@@ -9,6 +9,9 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+void erp(int now, char *command);
+void pt(int now);
+void ptt(int now);
 int chec(char *input, int now);
 void dish(char **command, char ***args, int *i, int j);
 void fro(char **command, char **input,char ***args, int k);
