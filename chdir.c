@@ -7,17 +7,18 @@
 void change_dir(char **path)
 {
 	char* argv[] = {"pwd", NULL};
-	int i, j, k = _strlen((*path));
-	char *te = malloc(sizeof(char) * _strlen((*path) + 1));
+	int i, j, k;
 
-	if (*path == NULL)
+	if ((*path) == NULL)
 	{
 		char *home = getenv("HOME");
 
 		chdir(home);
-		free(te);
+		return;
 	}
+	char *te = malloc(sizeof(char) * _strlen((*path) + 1));
 
+	k = _strlen((*path));
 	if ((*path)[0] == '[')
 		i++;
 	if ((*path)[_strlen(*path) - 1] == ']')

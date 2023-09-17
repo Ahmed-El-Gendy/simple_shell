@@ -8,6 +8,8 @@
 
 int main(void)
 {
+	signal(SIGINT, SIG_IGN);
+
 	char *input = NULL;
 	size_t len = 0;
 	struct stat s;
@@ -22,7 +24,6 @@ int main(void)
 			break;
 		if (rep(input))
 		{
-			free(input);
 			continue;
 		}
 		comma(&input);

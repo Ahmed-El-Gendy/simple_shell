@@ -5,7 +5,8 @@
  * Return: string
  */
 
-char* our_get_line() {
+char *our_get_line(void)
+{
 	char *buffer = NULL;
 	size_t buffer_size = 0;
 	ssize_t bytes_read;
@@ -23,9 +24,7 @@ char* our_get_line() {
 				exit(EXIT_FAILURE);
 			}
 		}
-
 		bytes_read = read(STDIN_FILENO, buffer + total_bytes_read, 64);
-
 		if (bytes_read == -1)
 		{
 			perror("Error reading input");
@@ -41,7 +40,6 @@ char* our_get_line() {
 		if (buffer[total_bytes_read - 1] == '\n')
 			break;
 	}
-
 	buffer[total_bytes_read] = '\0';
-	return buffer;
+		return (buffer);
 }

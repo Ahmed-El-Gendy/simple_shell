@@ -9,7 +9,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-char* our_get_line();
+char *our_get_line(void);
 void comma(char **input);
 void fre(char *command, char **args);
 void null_all(char **input, char **command, char ***args);
