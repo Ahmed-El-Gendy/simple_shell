@@ -8,7 +8,7 @@
 void change_dir(char **path, int now)
 {
 	char *argv[] = {"pwd", NULL};
-	int i, j, k;
+	int i = 0, j = 0, k = 0;
 
 	if ((*path) == NULL)
 	{
