@@ -17,13 +17,14 @@ int main(void)
 
 	while (true)
 	{
-		input = NULL;
 		if (check)
 			_puts("saged$ ");
-		if (getline(&input, &len, stdin) == -1)
+		input = our_get_line();
+		if (input == NULL)
 			break;
 		if (rep(input))
 		{
+			free(input);
 			continue;
 		}
 		comma(&input);
