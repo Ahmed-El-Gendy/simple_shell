@@ -9,7 +9,6 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-char* our_get_line();
 void comma(char **input);
 void fre(char *command, char **args);
 void null_all(char **input, char **command, char ***args);
@@ -21,7 +20,6 @@ void assign_env(char **var, char *s1, char *s2);
 void handle_env(char **command, char ***args, int n);
 void change_dir(char **path);
 int isfound(char *name);
-int findd(char *st1, char *st2);
 char *getpath(char **name, int len);
 extern char **environ;
 void unset_env(char *var);
