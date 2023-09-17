@@ -42,7 +42,7 @@ void comma(char **input, int now)
 			}
 			else
 				getpath(&command, _strlen(command));
-			dish(&command, &args, &i ,j);
+			dish(&command, &args, &i, j);
 		}
 		if ((*input)[j] == '\0' || (*input)[j] == '#')
 			break;
@@ -53,6 +53,8 @@ void comma(char **input, int now)
  * dish - to free lines
  * @command: string
  * @args: array
+ * @i: int
+ * @j: int
  * Return: void
  */
 void dish(char **command, char ***args, int *i, int j)
@@ -67,6 +69,7 @@ void dish(char **command, char ***args, int *i, int j)
  * @command: string
  * @args: array
  * @input: string
+ * @k: int
  * Return: void
  */
 void fro(char **command, char **input, char ***args, int k)
