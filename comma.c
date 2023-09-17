@@ -12,7 +12,7 @@ void comma(char **input)
 
 	for (j = 0; ; j++)
 	{
-		if ((*input)[j] == ';' || (*input)[j] == '\0')
+		if ((*input)[j] == ';' || (*input)[j] == '\0' || (*input)[j] == '#')
 		{
 			if (j == i)
 			{
@@ -54,7 +54,7 @@ void comma(char **input)
 			fre(command, args);
 			i = j + 1;
 		}
-		if ((*input)[j] == '\0')
+		if ((*input)[j] == '\0' || (*input)[j] == '#')
 			break;
 	}
 }
