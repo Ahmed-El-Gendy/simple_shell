@@ -52,9 +52,7 @@ int chec(char *input, int now)
 		;
 	if (input[i] == ';')
 	{
-		_puts("sh: ");
-		print_int(now);
-		_puts("Syntax error: \";\" unexpected\n");
+		ptt(now);
 		return (0);
 	}
 	while (input[i] != '\0')
@@ -64,18 +62,14 @@ int chec(char *input, int now)
 			j = i + 1;
 			if (input[j] == ';')
 			{
-				_puts("sh: ");
-				print_int(now);
-				_puts("Syntax error: \";;\" unexpected\n");
+				pt(now);
 				return (0);
 			}
-			while (input[j] != '\0' && input [j] == ' ')
+			while (input[j] != '\0' && input[j] == ' ')
 				j++;
 			if (input[j] == ';')
 			{
-				_puts("sh: ");
-				print_int(now);
-				_puts("Syntax error: \";\" unexpected\n");
+				ptt(now);
 				return (0);
 			}
 			i = j;
@@ -83,4 +77,31 @@ int chec(char *input, int now)
 		i++;
 	}
 	return (1);
+}
+/**
+ * ptt - error
+ * @now: int
+ * Return: void
+ */
+void ptt(int now)
+{
+	_puts("sh: ");
+	print_int(now);
+	_puts("Syntax error: \"");
+	_putchar(';');
+	_puts("\" unexpected\n");
+}
+/**
+ * pt - error2
+ * @now: int
+ * Return: void
+ */
+void pt(int now)
+{
+	_puts("sh: ");
+	print_int(now);
+	_puts("Syntax error: \"");
+	_putchar(';');
+	_putchar(';');
+	_puts("\" unexpected\n");
 }
