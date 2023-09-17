@@ -41,5 +41,5 @@ char *our_get_line(void)
 			break;
 	}
 	buffer[total_bytes_read] = '\0';
-		return (buffer);
+	return (buffer);
 }

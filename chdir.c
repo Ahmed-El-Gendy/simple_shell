@@ -2,11 +2,12 @@
 /**
  * change_dir - change the current directory
  * @path: path of the dir
+ * @now: num of line
  * Return: nothing
  */
-void change_dir(char **path)
+void change_dir(char **path, int now)
 {
-	char* argv[] = {"pwd", NULL};
+	char *argv[] = {"pwd", NULL};
 	int i, j, k;
 
 	if ((*path) == NULL)
@@ -31,12 +32,18 @@ void change_dir(char **path)
 	if (cmp(*path, "-"))
 	{
 		chdir("..");
-		if( fork() == 0)
+		if (fork() == 0)
 			execve("/bin/pwd", argv, environ);
 		else
 			wait(NULL);
 	}
 	else if (chdir(te) != 0)
-		_puts("No such file or directory\n");
+	{
+		_puts("sh: ");
+		print_int(now);
+		_puts("cd: can't cd to ");
+		_puts(*path);
+		_putchar('\n');
+	}
 	free(te);
 }

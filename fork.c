@@ -23,15 +23,15 @@ void execute(char *command, char **args)
 /**
  * fre - free
  * @command: string
- * @args: array 
+ * @args: array
  */
 void fre(char *command, char **args)
 {
 	int i = 0;
 
-	if(!args)
+	if (!args)
 		return;
-	while(args[i])
+	while (args[i])
 	{
 		free(args[i]);
 		i++;

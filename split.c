@@ -5,9 +5,10 @@
  * @input: command
  * @command: command
  * @args: arguments
+ * @now: num of line
  * Return: void
  */
-void split(char *input, char **command, char ***args)
+void split(char *input, char **command, char ***args, int now)
 {
 	int arg_count, i = 0, co = 0, j;
 
@@ -17,7 +18,7 @@ void split(char *input, char **command, char ***args)
 		;
 	 *command = malloc(sizeof(char) * (co - i + 1));
 
-	 for (j = 0; i < co; i++, j++)
+	for (j = 0; i < co; i++, j++)
 		(*command)[j] = input[i];
 	 (*command)[j] = '\0';
 
@@ -48,6 +49,4 @@ void split(char *input, char **command, char ***args)
 		arg_count++;
 	}
 	(*args)[arg_count] = NULL;
-	/*for (i = 0;(*args)[i];i++)
-		puts((*args)[i])*/;
 }

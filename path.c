@@ -35,7 +35,7 @@ char *getpath(char **name, int len)
 	if (isfound(test2))
 	{
 		free(*name);
-		*name = malloc(sizeof(char ) * i);
+		*name = malloc(sizeof(char) * i);
 		for (i = 0; test2[i] != '\0'; i++)
 			path[i] = test2[i];
 		path[i] = '\0';

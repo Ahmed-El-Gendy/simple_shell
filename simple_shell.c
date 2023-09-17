@@ -14,6 +14,7 @@ int main(void)
 	size_t len = 0;
 	struct stat s;
 	int check = isatty(STDIN_FILENO);
+	int now = 1;
 
 	while (true)
 	{
@@ -24,10 +25,12 @@ int main(void)
 			break;
 		if (rep(input))
 		{
+			free(input);
 			continue;
 		}
-		comma(&input);
+		comma(&input, now);
 		free(input);
+		now++;
 	}
 	free(input);
 	return (0);

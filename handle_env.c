@@ -30,7 +30,6 @@ void unset_env(char *var)
 		_puts("not found\n");
 	}
 	free(check);
-	return;
 }
 
 /**
@@ -57,7 +56,7 @@ void assign_env(char **var, char *s1, char *s2)
 	}
 	(*var)[i] = '\0';
 }
-		
+
 /**
  * handle_env - setenv or unsetenv
  * @args: arguments
@@ -105,17 +104,20 @@ void handle_env(char **command, char ***args, int n)
 	else
 		_puts("erorr\n");
 }
+
 /**
  * findd - checher variable
  * @st1: string
  * @st2: string
- * Return 1 in sucess 0 in faik
+ * Return: 1 in sucess 0 in faik
  */
+
 int findd(char *st1, char *st2)
 {
 	char *s = malloc(sizeof(char) * _strlen(st1));
 	char *cl;
 	int i, j, c = 0;
+
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		cl = environ[i];
@@ -125,7 +127,7 @@ int findd(char *st1, char *st2)
 		{
 			s[j] = '=';
 			j++;
-			for (; st2[c] != '\0'; c++,j++)
+			for (; st2[c] != '\0'; c++, j++)
 				s[j] = st2[c];
 			free(environ[i]);
 			environ[i] = s;
