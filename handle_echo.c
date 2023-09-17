@@ -16,12 +16,12 @@ int handle_echo(char *input, char *command, char ***args)
 	fors(&i, &co, input);
 	*args = (char **)malloc(sizeof(char *) * 2);
 	(*args)[0] = command;
+	is = input[i];
 	if (input[i] == '\0' || (is != '\'' && is != '\"'))
 	{
 		fre1(*args);
 		return (1);
 	}
-	is = input[i];
 	le = _strlen(input);
 	for (le = le - 1; input[le] == ' '; le--)
 		;

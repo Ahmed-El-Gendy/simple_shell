@@ -9,8 +9,20 @@
  */
 int con(char **command, char ***args, int now)
 {
-	int n = len_args(args), i = 0;
+	int n = len_args(args), i = 0, j = 0;
 
+	while ((*command)[j] != '\0')
+	{
+		j++;
+		if ((*command)[j] != ' ')
+		{
+			i++;
+			break;
+		}
+	}
+	if (!i)
+		return (1);
+	i = 0;
 	if (cmp(*command, "setenv") || cmp(*command, "unsetenv"))
 	{
 		handle_env(command, args, n);

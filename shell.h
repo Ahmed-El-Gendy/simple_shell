@@ -9,6 +9,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+int chec(char *input, int now);
 void dish(char **command, char ***args, int *i, int j);
 void fro(char **command, char **input,char ***args, int k);
 void fors(int *i, int *co, char *input);
