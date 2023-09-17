@@ -11,7 +11,7 @@ void unset_env(char *var)
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		or = environ[i];
-		for (j = 0; j < k; j++)
+		for (j = 0; j < k && or[j] != '\0'; j++)
 			check[j] = or[j];
 		if (cmp(check, var))
 		{
@@ -28,7 +28,6 @@ void unset_env(char *var)
 	{
 		_puts("not found\n");
 	}
-	check = NULL;
 	free(check);
 	return;
 }

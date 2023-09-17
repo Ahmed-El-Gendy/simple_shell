@@ -8,9 +8,9 @@
  * Return: 1 or 0
  */
 
-int handle_echo(char *input, char **command, char ***args)
+int handle_echo(char *input, char *command, char ***args)
 {
-	int arg_count, i, co = 0, j, le, k;
+	int arg_count, i = 0, co = 0, j = 0, le, k;
 	char *token = NULL, is;
 
 	for (i = 0; input[i] == ' '; i++)
@@ -18,11 +18,14 @@ int handle_echo(char *input, char **command, char ***args)
 	for (co = i; input[co] != ' ' && input[co] != '\0'; co++)
 		;
 	*args = (char **)malloc(sizeof(char *) * 2);
-	(*args)[0] = *command;
+	(*args)[0] = command;
 	for (i = co; input[i] == ' ' && input[i] != '\0'; i++)
 		;
 	if (input[i] == '\0')
+	{
+		fre1(*args);
 		return (1);
+	}
 	is = input[i];
 	if (is == '\'' || is == '\"')
 	{
@@ -30,21 +33,43 @@ int handle_echo(char *input, char **command, char ***args)
 		for (le = le - 1; input[le] == ' '; le--)
 			;
 		if (le == i)
+		{
+			fre1(*args);
 			return (1);
+		}
 		if (input[le] == is)
 		{
-			char *st = malloc(sizeof(char) * (le - i - 1));
+			(*args)[1] = malloc(sizeof(char) * (le - i - 1));
+			char *st = (*args)[1];
 
 			for (j = i + 1, k = 0; j < le; j++, k++)
 				st[k] = input[j];
+			st[k] = '\0';
 			(*args)[1] = st;
 			st = NULL;
 			free(st);
 			return (0);
 		}
 		else
+		{
+			fre1(*args);
 			return (1);
+		}
 	}
 	else
+	{
+		fre1(*args);
 		return (1);
+	}
+}
+/**
+ * fre1 - free
+ * @args: args
+ */
+void fre1(char **args)
+{
+	args[0] = NULL;
+	free(args[0]);
+	free(args[1]);
+	free(args);
 }
