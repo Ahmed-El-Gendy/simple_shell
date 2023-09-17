@@ -9,7 +9,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-void erp(int now);
+void erp(int now, char *command);
 void pt(int now);
 void ptt(int now);
 int chec(char *input, int now);

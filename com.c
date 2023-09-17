@@ -52,7 +52,7 @@ int con(char **command, char ***args, int now)
 	}
 	if (!getpath((command), _strlen(*command)))
 	{
-		erp(now);
+		erp(now, *command);
 		return (1);
 	}
 	return (0);
@@ -63,10 +63,10 @@ int con(char **command, char ***args, int now)
  * @now: int
  * Return: void
  */
-void erp(int now)
+void erp(int now, char *command)
 {
 	_puts("sh: ");
 	print_int(now);
-	_puts(*command);
+	_puts(command);
 	_puts(": not found\n");
 }
