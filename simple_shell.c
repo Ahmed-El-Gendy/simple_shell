@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	char *input = NULL, *command, **args;
+	char *input = NULL;
 	size_t len = 0;
 	struct stat s;
 	int check = isatty(STDIN_FILENO);
@@ -21,8 +21,11 @@ int main(void)
 		if (getline(&input, &len, stdin) == -1)
 			break;
 		if (rep(input))
+		{
 			continue;
-		comma(input, command, args);
+		}
+		comma(&input);
+		free(input);
 	}
 	free(input);
 	return (0);

@@ -9,26 +9,22 @@
  */
 void split(char *input, char **command, char ***args)
 {
-	int arg_count, i, co = 0, j;
-	char *token = NULL;
+	int arg_count, i = 0, co = 0, j;
 
 	for (i = 0; input[i] == ' '; i++)
 		;
-	for (co = i; input[co] != ' ' && input[co] != '\0'; co++)
+	for (co = i; (input[co] != ' ') && (input[co] != '\0'); co++)
 		;
-	token = malloc(sizeof(char) * co);
-	for (j = 0; i < co; i++, j++)
-		token[j] = input[i];
-	*command = token;
-	token = NULL;
-	free(token);
-	fre(*command, *args);
-	exit(0);
+	 *command = malloc(sizeof(char) * (co - i + 1));
+
+	 for (j = 0; i < co; i++, j++)
+		(*command)[j] = input[i];
+	 (*command)[j] = '\0';
+
 	if (cmp(*command, "echo"))
 	{
-		if (!handle_echo(input, command, args))
+		if (!handle_echo(input, *command, args))
 			return;
-		args = NULL;
 	}
 	*args = (char **)malloc(sizeof(char *) * 256)
 		;
@@ -42,11 +38,16 @@ void split(char *input, char **command, char ***args)
 			break;
 		for (i = 0; input[i + co] != ' ' && input[i + co] != '\0'; i++)
 			;
-		token = NULL;
-		token = malloc(sizeof(char) * i);
+		(*args)[arg_count] = malloc(sizeof(char) * i);
+		char *token2 = (*args)[arg_count];
+
 		for (j = 0; input[co] != ' ' && input[co] != '\0'; co++, j++)
-			token[j] = input[co];
-		(*args)[arg_count] = token;
+			token2[j] = input[co];
+		token2[j] = '\0';
+		(*args)[arg_count] = token2;
 		arg_count++;
 	}
+	(*args)[arg_count] = NULL;
+	/*for (i = 0;(*args)[i];i++)
+		puts((*args)[i])*/;
 }

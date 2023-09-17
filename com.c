@@ -8,8 +8,7 @@
  */
 int con(char **command, char ***args)
 {
-	char **env;
-	int n = len_args(args);
+	int n = len_args(args), i = 0;
 
 	if (cmp(*command, "setenv") || cmp(*command, "unsetenv"))
 	{
@@ -20,10 +19,9 @@ int con(char **command, char ***args)
 	{
 		if (n == 1)
 		{
-			env = environ;
-			for ( ; *env != NULL; env++)
+			for (i = 0 ; environ[i] != NULL; i++)
 			{
-				_puts(*env);
+				_puts(environ[i]);
 				_putchar('\n');
 			}
 			return (1);
@@ -39,7 +37,7 @@ int con(char **command, char ***args)
 		change_dir(&(*args)[1]);
 		return (1);
 	}
-	if (!getpath(*command, _strlen(*command)))
+	if (!getpath((command), _strlen(*command)))
 	{
 		_puts("No such file or directory\n");
 		return (1);
