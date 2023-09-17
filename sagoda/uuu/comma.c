@@ -50,5 +50,4 @@ void comma(char *input, char *command, char **args)
 		if (input[j] == '\0')
 			break;
 	}
-	free(input2);
 }

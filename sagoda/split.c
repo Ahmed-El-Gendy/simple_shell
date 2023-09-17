@@ -22,8 +22,6 @@ void split(char *input, char **command, char ***args)
 	*command = token;
 	token = NULL;
 	free(token);
-	fre(*command, *args);
-	exit(0);
 	if (cmp(*command, "echo"))
 	{
 		if (!handle_echo(input, command, args))

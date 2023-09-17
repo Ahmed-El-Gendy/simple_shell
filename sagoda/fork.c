@@ -36,5 +36,5 @@ void fre(char *command, char **args)
 		free(args[i]);
 		i++;
 	}
-	free(args);
+	args = NULL;
 }
