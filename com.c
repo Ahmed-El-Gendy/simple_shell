@@ -7,7 +7,7 @@
  * @now: num of line
  * Return: 1 if true 0 if false
  */
-int con(char **command, char ***args, int now)
+int con(char **command, char ***args, int now, char **argv)
 {
 	int n = len_args(args), i = 0, j = 0;
 
@@ -25,16 +25,16 @@ int con(char **command, char ***args, int now)
 	i = 0;
 	if (cmp(*command, "setenv") || cmp(*command, "unsetenv"))
 	{
-		handle_env(command, args, n);
+		handle_env(command, args, n, argv);
 		return (1);
 	}
 	if (cmp(*command, "env"))
 	{
 		if (n == 1)
 		{
-			for (i = 0 ; environ[i] != NULL; i++)
+			for (i = 0 ; argv[i] != NULL; i++)
 			{
-				_puts(environ[i]);
+				_puts(argv[i]);
 				_putchar('\n');
 			}
 			return (1);
@@ -47,7 +47,7 @@ int con(char **command, char ***args, int now)
 			_puts("erorr\n");
 			return (1);
 		}
-		change_dir(&(*args)[1], now);
+		change_dir(&(*args)[1], now, argv);
 		return (1);
 	}
 	if (!getpath((command), _strlen(*command)))

@@ -15,7 +15,10 @@ int main(void)
 	struct stat s;
 	int check = isatty(STDIN_FILENO);
 	int now = 1;
+	char **argv;
 
+	argv = malloc(sizeof(char *) * 250);
+	fill(&argv);
 	while (true)
 	{
 		if (check)
@@ -29,10 +32,11 @@ int main(void)
 			continue;
 		}
 		if (chec(input, now))
-			comma(&input, now);
+			comma(&input, now, argv);
 		free(input);
 		now++;
 	}
+	fre_argv(argv);
 	free(input);
 	return (0);
 }

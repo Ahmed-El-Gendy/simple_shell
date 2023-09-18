@@ -3,33 +3,40 @@
  * unset_env - unset
  * @var: var
  */
-void unset_env(char *var)
+void unset_env(char *var, char **argv)
 {
 	int i, j, k = _strlen(var), c = 0;
-	char *check = malloc(sizeof(char) * (k + 1)), *or;
+	char *or;
 
-	for (i = 0; environ[i] != NULL; i++)
+	for (i = 0; argv[i] != NULL; i++)
 	{
-		or = environ[i];
+		char *check = malloc(sizeof(char) * (k + 1));
+
+		or = argv[i];
 		for (j = 0; j < k && or[j] != '\0'; j++)
 			check[j] = or[j];
 		check[j] = '\0';
 		if (cmp(check, var))
 		{
 			c = 1;
+			free(check);
 			break;
 		}
+		free(check);
 	}
 	if (c)
 	{
-		for (i = i; environ[i] != NULL; i++)
-			environ[i] = environ[i + 1];
+		for (i = i; argv[i] != NULL; i++)
+		{
+			free(argv[i]);
+			argv[i] = argv[i + 1];
+		}
+		free(argv[i]);
 	}
 	else
 	{
 		_puts("not found\n");
 	}
-	free(check);
 }
 
 /**
@@ -63,7 +70,7 @@ void assign_env(char **var, char *s1, char *s2)
  * @n: number of element
  * @command: command
  */
-void handle_env(char **command, char ***args, int n)
+void handle_env(char **command, char ***args, int n, char **argv)
 {
 	char *var;
 	int i;
@@ -77,7 +84,7 @@ void handle_env(char **command, char ***args, int n)
 			_puts("erorr\n");
 			return;
 		}
-		unset_env((*args)[1]);
+		unset_env((*args)[1], argv);
 		return;
 	}
 	else if (n == 3)
@@ -88,17 +95,17 @@ void handle_env(char **command, char ***args, int n)
 			return;
 		}
 		var = malloc(sizeof(char) * (_strlen((*args)[1]) + _strlen((*args)[2]) + 2));
-		if (findd((*args)[1], (*args)[2]))
+		if (findd((*args)[1], (*args)[2], argv))
 		{
 			free(var);
 			return;
 		}
 		assign_env(&var, (*args)[1], (*args)[2]);
-		for (i = 0; environ[i] != NULL; i++)
+		for (i = 0; argv[i] != NULL; i++)
 			;
-		free(environ[i]);
-		environ[i] = var;
-		environ[i + 1] = NULL;
+		free(argv[i]);
+		argv[i] = var;
+		argv[i + 1] = NULL;
 		return;
 	}
 	else
@@ -112,15 +119,15 @@ void handle_env(char **command, char ***args, int n)
  * Return: 1 in sucess 0 in faik
  */
 
-int findd(char *st1, char *st2)
+int findd(char *st1, char *st2, char **argv)
 {
 	char *s = malloc(sizeof(char) * _strlen(st1));
 	char *cl;
 	int i, j, c = 0;
 
-	for (i = 0; environ[i] != NULL; i++)
+	for (i = 0; argv[i] != NULL; i++)
 	{
-		cl = environ[i];
+		cl = argv[i];
 		for (j = 0; j < _strlen(st1) && cl[j] != '\0'; j++)
 			s[j] = cl[j];
 		if (cmp(s, st1))
@@ -129,8 +136,9 @@ int findd(char *st1, char *st2)
 			j++;
 			for (; st2[c] != '\0'; c++, j++)
 				s[j] = st2[c];
-			free(environ[i]);
-			environ[i] = s;
+			free(argv[i]);
+			argv[i] = s;
+			argv[i + 1] = NULL;
 			return (1);
 		}
 	}

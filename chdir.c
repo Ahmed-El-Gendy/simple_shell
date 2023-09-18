@@ -5,16 +5,18 @@
  * @now: num of line
  * Return: nothing
  */
-void change_dir(char **path, int now)
+void change_dir(char **path, int now, char **argv)
 {
-	char *argv[] = {"pwd", NULL};
-	int i, j, k;
+	char *arg[] = {"pwd", NULL}, buf[1024];
+	int i = 0, j = 0, k = 0;
 
 	if ((*path) == NULL)
 	{
 		char *home = getenv("HOME");
 
 		chdir(home);
+		getcwd(buf,sizeof(buf));
+		update(argv, buf);
 		return;
 	}
 	char *te = malloc(sizeof(char) * _strlen((*path) + 1));
@@ -33,7 +35,7 @@ void change_dir(char **path, int now)
 	{
 		chdir("..");
 		if (fork() == 0)
-			execve("/bin/pwd", argv, environ);
+			execve("/bin/pwd", arg, environ);
 		else
 			wait(NULL);
 	}
@@ -45,5 +47,37 @@ void change_dir(char **path, int now)
 		_puts(*path);
 		_putchar('\n');
 	}
+	getcwd(buf,sizeof(buf));
+	update(argv, buf);
 	free(te);
+}
+/**
+ * update - up
+ * @argv: env
+ * @value: va
+ */
+void update(char **argv, char *value)
+{
+	char *new = malloc(sizeof(char) * (_strlen(value) + 1));
+	char *s;
+	int i, j;
+	
+	new[0] = 'P';
+	new[1] = 'W';
+	new[2] = 'D';
+	new[3] = '=';
+	for (i = 4, j = 0; value[j] != '\0'; i++, j++)
+		new[i] = value[j];
+	new[i] = '\0';
+	for (i = 0; argv[i] != NULL; i++)
+	{
+		s = argv[i];
+		if((s[0] == 'P') && (s[1] == 'W') && (s[2] == 'D'))
+		{
+			free(argv[i]);
+			argv[i] = new;
+			return;
+		}
+	}
+	free(new);
 }
