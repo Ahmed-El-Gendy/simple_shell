@@ -31,6 +31,7 @@ void change_dir(char **path, int now, char **argv)
 		te[j] = (*path)[i];
 		j++;
 	}
+	te[j] = '\0';
 	if (cmp(*path, "-"))
 	{
 		chdir("..");
