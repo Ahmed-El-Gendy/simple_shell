@@ -18,7 +18,7 @@ int main(void)
 	while (true)
 	{
 		if (check)
-			_puts("saged$ ");
+			_puts(":) ");
 		input = our_get_line();
 		if (input == NULL)
 			break;
