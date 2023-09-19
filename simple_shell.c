@@ -31,8 +31,6 @@ int main(void)
 			comma(&input, now, argv);
 		free(input);
 		now++;
-		if (!check)
-			_puts("$ ");
 	}
 	fre_argv(argv);
 	free(input);
