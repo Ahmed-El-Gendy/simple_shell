@@ -7,7 +7,7 @@
 void value(char **args, char **argv)
 {
 	int i, j;
-	char *s, v;
+	char *s;
 
 	for (i = 0; args[i] != NULL; i++)
 	{

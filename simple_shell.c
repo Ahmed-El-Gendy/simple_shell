@@ -8,15 +8,11 @@
 
 int main(void)
 {
-	signal(SIGINT, SIG_IGN);
-
-	char *input = NULL;
-	size_t len = 0;
-	struct stat s;
+	char *input, **argv;
 	int check = isatty(STDIN_FILENO);
 	int now = 1;
-	char **argv;
 
+	signal(SIGINT, SIG_IGN);
 	argv = malloc(sizeof(char *) * 250);
 	fill(&argv);
 	while (true)

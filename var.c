@@ -6,7 +6,7 @@
  */
 char *var(char *st, char **argv)
 {
-	char *test = malloc(sizeof(char) * (_strlen(st) + 1)), *a;
+	char *test = malloc(sizeof(char) * (_strlen(st) + 1)), *a, *re;
 	int i = 0, j = 0;
 
 	for (i = 0; argv[i] != NULL; i++)
@@ -18,7 +18,7 @@ char *var(char *st, char **argv)
 		if (cmp(test, st))
 		{
 			free(test);
-			char *re = malloc(sizeof(char) * (_strlen(a) + 1));
+			re = malloc(sizeof(char) * (_strlen(a) + 1));
 
 			for (i = 0; a[i] != '='; i++)
 				;

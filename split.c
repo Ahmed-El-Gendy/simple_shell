@@ -8,9 +8,10 @@
  * @now: num of line
  * Return: void
  */
-void split(char *input, char **command, char ***args, int now)
+void split(char *input, char **command, char ***args)
 {
 	int arg_count, i = 0, co = 0, j;
+	char *token2;
 
 	for (i = 0; input[i] == ' '; i++)
 		;
@@ -40,7 +41,7 @@ void split(char *input, char **command, char ***args, int now)
 		for (i = 0; input[i + co] != ' ' && input[i + co] != '\0'; i++)
 			;
 		(*args)[arg_count] = malloc(sizeof(char) * i);
-		char *token2 = (*args)[arg_count];
+		token2 = (*args)[arg_count];
 
 		for (j = 0; input[co] != ' ' && input[co] != '\0'; co++, j++)
 			token2[j] = input[co];

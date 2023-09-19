@@ -24,7 +24,7 @@ void execute(char *command, char **args, char **argv)
  * @command: string
  * @args: array
  */
-void fre(char *command, char **args)
+void fre(char **args)
 {
 	int i = 0;
 

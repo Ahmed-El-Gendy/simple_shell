@@ -7,13 +7,14 @@
  */
 char *getpath(char **name, int len)
 {
-	char test1[len + 5];
-	char test2[len + 9];
+	char *test1;
+	char *test2;
 	int i;
-	char *path;
 
 	if (isfound(*name))
 		return (*name);
+	test1 = malloc(sizeof(char) * (len + 5));
+	test2 =  malloc(sizeof(char) * (len + 9));
 	 _strcpy(test1, "/bin/");
 	for (i = 5; i < len + 5; i++)
 	{
@@ -27,6 +28,7 @@ char *getpath(char **name, int len)
 		for (i = 0; test1[i] != '\0'; i++)
 			(*name)[i] = test1[i];
 		(*name)[i] = '\0';
+		free(test1), free(test2);
 		return (*name);
 	}
 	_strcpy(test2, "/usr/bin/");
@@ -37,8 +39,9 @@ char *getpath(char **name, int len)
 		free(*name);
 		*name = malloc(sizeof(char) * i);
 		for (i = 0; test2[i] != '\0'; i++)
-			path[i] = test2[i];
-		path[i] = '\0';
+			(*name)[i] = test2[i];
+		(*name)[i] = '\0';
+		free(test1), free(test2);
 		return (*name);
 	}
 	return (NULL);
