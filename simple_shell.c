@@ -18,7 +18,7 @@ int main(void)
 	while (true)
 	{
 		if (check)
-			_puts(":) ");
+			_puts("$ ");
 		input = our_get_line();
 		if (input == NULL)
 			break;
@@ -31,6 +31,8 @@ int main(void)
 			comma(&input, now, argv);
 		free(input);
 		now++;
+		if (!check)
+			_puts("$ ");
 	}
 	fre_argv(argv);
 	free(input);
