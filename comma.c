@@ -27,6 +27,7 @@ void comma(char **input, int now, char **argv)
 				input2[k] = (*input)[i];
 			input2[k] = '\0';
 			split(input2, &command, &args, now);
+			value(args, argv);
 			free(input2);
 			if (cmp(command, "exit"))
 			{
