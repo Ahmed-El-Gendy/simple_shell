@@ -58,10 +58,9 @@ int con(char **command, char ***args, int now, char **argv)
  */
 void erp(int now, char *command)
 {
-	_puts("sh: ");
-	print_int(now);
-	_puts(command);
-	_puts(": not found\n");
+	now = now;
+	command = command;
+	write(2, "not found", strlen("not found"));
 }
 /**
  * call_env - call

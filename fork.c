@@ -11,7 +11,7 @@ void execute(char *command, char **args, char **argv)
 	if (pid == 0)
 	{
 		execve(command, args, argv);
-		_puts("No such file or directory\n");
+		write(2, "No such file or directory\n", strlen("No such file or directory\n"));
 		exit(EXIT_FAILURE);
 	}
 	else
