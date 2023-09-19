@@ -30,15 +30,8 @@ int con(char **command, char ***args, int now, char **argv)
 	}
 	if (cmp(*command, "env"))
 	{
-		if (n == 1)
-		{
-			for (i = 0 ; argv[i] != NULL; i++)
-			{
-				_puts(argv[i]);
-				_putchar('\n');
-			}
+		if (call_env(n, argv))
 			return (1);
-		}
 	}
 	if (cmp(*command, "cd"))
 	{
@@ -70,3 +63,25 @@ void erp(int now, char *command)
 	_puts(command);
 	_puts(": not found\n");
 }
+/**
+ * call_env - call
+ * @n: n
+ * @argv: argv
+ * Return: 1 or 0
+ */
+int call_env(int n, char **argv)
+{
+	int i;
+
+	if (n == 1)
+	{
+		for (i = 0 ; argv[i] != NULL; i++)
+		{
+			_puts(argv[i]);
+			_putchar('\n');
+		}
+		return (1);
+	}
+	return (0);
+}
+

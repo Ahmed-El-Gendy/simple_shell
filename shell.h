@@ -37,6 +37,7 @@ void update(char **argv, char *value);
 char *var(char *st, char **argv);
 void oldpwd(char **argv, char *value);
 void value(char **args, char **argv);
+int call_env(int n, char **argv);
 void unset_env(char *var, char **argv);
 int con(char **command, char ***args, int now, char **argv);
 void split(char *input, char **command, char ***args, int now);

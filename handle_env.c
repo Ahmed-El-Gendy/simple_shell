@@ -2,6 +2,7 @@
 /**
  * unset_env - unset
  * @var: var
+ * @argv: argv
  */
 void unset_env(char *var, char **argv)
 {
@@ -35,7 +36,7 @@ void unset_env(char *var, char **argv)
 	}
 	else
 	{
-		_puts("not found\n");
+		write(2, "not found\n", 10);
 	}
 }
 
@@ -68,6 +69,7 @@ void assign_env(char **var, char *s1, char *s2)
  * handle_env - setenv or unsetenv
  * @args: arguments
  * @n: number of element
+ * @argv: argv
  * @command: command
  */
 void handle_env(char **command, char ***args, int n, char **argv)
@@ -76,12 +78,12 @@ void handle_env(char **command, char ***args, int n, char **argv)
 	int i;
 
 	if (n == 1)
-		_puts("erorr\n");
+		 write(2, "not found\n", 10);
 	else if (n == 2)
 	{
 		if (cmp(*command, "setenv"))
 		{
-			_puts("erorr\n");
+			write(2, "not found\n", 10);
 			return;
 		}
 		unset_env((*args)[1], argv);
@@ -91,7 +93,7 @@ void handle_env(char **command, char ***args, int n, char **argv)
 	{
 		if (cmp(*command, "usetenv"))
 		{
-			_puts("erorr\n");
+			write(2, "not found\n", 10);
 			return;
 		}
 		var = malloc(sizeof(char) * (_strlen((*args)[1]) + _strlen((*args)[2]) + 2));
@@ -109,13 +111,14 @@ void handle_env(char **command, char ***args, int n, char **argv)
 		return;
 	}
 	else
-		_puts("erorr\n");
+		write(2, "not found\n", 10);
 }
 
 /**
  * findd - checher variable
  * @st1: string
  * @st2: string
+ * @argv: argv
  * Return: 1 in sucess 0 in faik
  */
 

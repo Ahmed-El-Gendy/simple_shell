@@ -3,23 +3,21 @@
  * change_dir - change the current directory
  * @path: path of the dir
  * @now: num of line
+ * @argv: argv
  * Return: nothing
  */
 void change_dir(char **path, int now, char **argv)
 {
 	char *arg[] = {"pwd", NULL}, buf[1024], *arr = var("PWD", argv);
 	int i = 0, j = 0, k = 0;
+	char *home = var("HOME", argv), *pre = var("OLDPWD", argv);
 
 	if ((*path) == NULL)
 	{
-		char *home = var("HOME", argv);
-
 		chdir(home);
-		free(home);
-		getcwd(buf,sizeof(buf));
-		oldpwd(argv, arr);
-		free(arr);
-		update(argv, buf);
+		getcwd(buf, sizeof(buf));
+		oldpwd(argv, arr), update(argv, buf);
+		free(pre), free(home), free(arr);
 		return;
 	}
 	char *te = malloc(sizeof(char) * _strlen((*path) + 1));
@@ -37,28 +35,17 @@ void change_dir(char **path, int now, char **argv)
 	te[j] = '\0';
 	if (cmp(*path, "-"))
 	{
-		char *pre = var("OLDPWD", argv);
-
 		chdir(pre);
-		free(pre);
-		if (fork() == 0)
-			execve("/bin/pwd", arg, argv);
-		else
-			wait(NULL);
+		execute("/bin/pwd", arg, argv);
 	}
 	else if (chdir(te) != 0)
 	{
-		_puts("sh: ");
-		print_int(now);
-		_puts("cd: can't cd to ");
-		_puts(*path);
+		_puts("sh: "), print_int(now), _puts("cd: can't cd to "), _puts(*path);
 		_putchar('\n');
 	}
-	getcwd(buf,sizeof(buf));
-	oldpwd(argv, arr);
-	free(arr);
-	update(argv, buf);
-	free(te);
+	getcwd(buf, sizeof(buf));
+	oldpwd(argv, arr), update(argv, buf);
+	free(te), free(home), free(arr), free(pre);
 }
 /**
  * update - up
@@ -70,7 +57,7 @@ void update(char **argv, char *value)
 	char *new = malloc(sizeof(char) * (_strlen(value) + 1));
 	char *s;
 	int i, j;
-	
+
 	new[0] = 'P';
 	new[1] = 'W';
 	new[2] = 'D';
@@ -81,7 +68,7 @@ void update(char **argv, char *value)
 	for (i = 0; argv[i] != NULL; i++)
 	{
 		s = argv[i];
-		if((s[0] == 'P') && (s[1] == 'W') && (s[2] == 'D'))
+		if ((s[0] == 'P') && (s[1] == 'W') && (s[2] == 'D'))
 		{
 			free(argv[i]);
 			argv[i] = new;
@@ -116,11 +103,14 @@ void oldpwd(char **argv, char *value)
 	for (i = 0; argv[i] != NULL; i++)
 	{
 		s = argv[i];
-		if((s[0] == 'O') && (s[1] == 'L') && (s[2] == 'D') && s[3] == 'P' && s[4] == 'W' && s[5] == 'D')
+		if ((s[0] == 'O') && (s[1] == 'L') && (s[2] == 'D'))
 		{
-			free(argv[i]);
-			argv[i] = new;
-			return;
+			if ((s[3] == 'P') && (s[4] == 'W') && (s[5] == 'D'))
+			{
+				free(argv[i]);
+				argv[i] = new;
+				return;
+			}
 		}
 	}
 	free(new);
