@@ -32,8 +32,6 @@ int main(void)
 		}
 		if (cmp(input, "exit"))
 			break;
-		_puts(input);
-		_puts("\n");
 		if (chec(input, now))
 			comma(&input, now);
 		/*free(input);*/
