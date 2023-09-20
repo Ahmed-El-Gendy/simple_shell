@@ -25,3 +25,4 @@ ppid
 getcwd
 strtok
 string
+execve
