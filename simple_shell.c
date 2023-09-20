@@ -18,8 +18,8 @@ int main(void)
 	{
 		if (check)
 			_puts("$ ");
-		input = malloc(1024);
-		if (fgets(input, 1024, stdin) == NULL)
+		input = malloc(5000000);
+		if (fgets(input, 5000000, stdin) == NULL)
 		{
 			if (check)
 				_puts("\n");
