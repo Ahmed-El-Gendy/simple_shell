@@ -22,12 +22,12 @@ void split(char *input, char **command, char ***args)
 	for (j = 0; i < co; i++, j++)
 		(*command)[j] = input[i];
 	 (*command)[j] = '\0';
-
+/*
 	if (cmp(*command, "echo"))
 	{
 		if (!handle_echo(input, *command, args))
 			return;
-	}
+	}*/
 	*args = (char **)malloc(sizeof(char *) * 256)
 		;
 	(*args)[0] = *command;
