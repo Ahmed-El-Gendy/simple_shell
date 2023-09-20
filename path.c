@@ -5,12 +5,11 @@
  * @len: leanth of the name
  * Return: NULL if the file isnot found or the path if the file is found
  */
-char *getpath(char **name, int len, char **argv)
+char *getpath(char **name, int len)
 {
 	int i, j, k;
 	char *token, *st, *t;
 
-	argv = argv;
 	len = len;
 	if (isfound(*name))
 		return (*name);

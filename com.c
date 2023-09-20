@@ -7,7 +7,7 @@
  * @now: num of line
  * Return: 1 if true 0 if false
  */
-int con(char **command, char ***args, int now, char **argv)
+int con(char **command, char ***args, int now)
 {
 	int n = len_args(args), i = 0, j = 0;
 
@@ -25,7 +25,7 @@ int con(char **command, char ***args, int now, char **argv)
 	i = 0;
 	if (cmp(*command, "env"))
 	{
-		if (call_env(n, argv))
+		if (call_env(n))
 			return (1);
 	}
 	if (cmp(*command, "cd"))
@@ -35,10 +35,10 @@ int con(char **command, char ***args, int now, char **argv)
 			_puts("erorr\n");
 			return (1);
 		}
-		change_dir(&(*args)[1], now, argv);
+		change_dir(&(*args)[1], now);
 		return (1);
 	}
-	if (!getpath((command), _strlen(*command), argv))
+	if (!getpath((command), _strlen(*command)))
 	{
 		erp(now, *command);
 		return (1);
@@ -71,15 +71,15 @@ void erp(int now, char *command)
  * @argv: argv
  * Return: 1 or 0
  */
-int call_env(int n, char **argv)
+int call_env(int n)
 {
 	int i;
 
 	if (n == 1)
 	{
-		for (i = 0 ; argv[i] != NULL; i++)
+		for (i = 0 ; environ[i] != NULL; i++)
 		{
-			_puts(argv[i]);
+			_puts(environ[i]);
 			_putchar('\n');
 		}
 		return (1);

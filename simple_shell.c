@@ -6,13 +6,11 @@
  * Return: always 0
  */
 
-int main(int ac, char **av, char **env)
+int main(void)
 {
 	char *input;
 	int check = isatty(STDIN_FILENO);
 	int now = 1;
-	ac = ac;
-	av = av;
 
 	while (true)
 	{
@@ -27,7 +25,12 @@ int main(int ac, char **av, char **env)
 			continue;
 		}
 		if (chec(input, now))
-			comma(&input, now, env);
+		{
+			if (!comma(&input, now))
+			{
+				return (0);
+			}
+		}
 		free(input);
 		now++;
 	}

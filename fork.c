@@ -4,13 +4,12 @@
  * @command: command
  * @args: arguments
  */
-void execute(char *command, char **args, char **argv, int now)
+void execute(char *command, char **args, int now)
 {
 	char *st;
 	pid_t pid = fork();
 
 	st = tost(now);
-	argv = argv;
 	if (pid < 0)
 	{
 		write(2, "./hsh: ", 7);
@@ -20,7 +19,7 @@ void execute(char *command, char **args, char **argv, int now)
 	}
 	if (pid == 0)
 	{
-		execve(command, args, argv);
+		execve(command, args, environ);
 		write(2, "./hsh: ", 7);
 		write(2, st, _strlen(st));
 		write(2, ": No such file or directory\n", strlen(": No such file or directory\n"));

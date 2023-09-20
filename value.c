@@ -4,14 +4,14 @@
  * @args: arguments
  * @argv: arg
  */
-void value(char **args, char **argv)
+void value(char **args)
 {
 	int i, j;
 	char *s;
 
-	for (i = 0; args[i] != NULL; i++)
+	for (i = 0; environ[i] != NULL; i++)
 	{
-		s = args[i];
+		s = environ[i];
 		if (s[0] =='$')
 		{
 			char *m = malloc(sizeof(char) * (_strlen(s)));
@@ -20,7 +20,7 @@ void value(char **args, char **argv)
 				m[j - 1] = s[j];
 			m[j - 1] = '\0';
 			free(args[i]);
-			args[i] = var(m, argv);
+			args[i] = var(m);
 			free(m);
 		}
 	}

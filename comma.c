@@ -6,7 +6,7 @@
  * @now: num of line
  * Return: void
  */
-void comma(char **input, int now, char **argv)
+int comma(char **input, int now)
 {
 	char *input2, **args, *command;
 	int i = 0, j = 0, k = 0;
@@ -27,29 +27,34 @@ void comma(char **input, int now, char **argv)
 				input2[k] = (*input)[i];
 			input2[k] = '\0';
 			split(input2, &command, &args);
-			value(args, argv);
+			value(args);
 			free(input2);
 			if (cmp(command, "exit"))
 			{
 				if (!convert(&args, &k))
+				{
+					fre(args);
+					return (0);
 					fro(&command, input, &args, 0);
+				}
 				fro(&command, input, &args, k);
 				i = j + 1;
 				continue;
 			}
-			if (con(&command, &args, now, argv))
+			if (con(&command, &args, now))
 			{
 				fre(args);
 				i = j + 1;
 				continue;
 			}
 			else
-				getpath(&command, _strlen(command), argv);
-			dish(&command, &args, &i, j, argv, now);
+				getpath(&command, _strlen(command));
+			dish(&command, &args, &i, j, now);
 		}
 		if ((*input)[j] == '\0' || (*input)[j] == '#')
 			break;
 	}
+	return (1);
 }
 
 /**
@@ -60,11 +65,10 @@ void comma(char **input, int now, char **argv)
  * @j: int
  * Return: void
  */
-void dish(char **command, char ***args, int *i, int j, char **argv, int now)
+void dish(char **command, char ***args, int *i, int j, int now)
 {
 	(*args)[0] = *command;
-	argv = argv;
-	execute(*command, *args, argv, now);
+	execute(*command, *args, now);
 	fre(*args);
 	*i = j + 1;
 }
