@@ -7,7 +7,7 @@
  * @now: int
  * Return: void
  */
-int execute(char *command, char **args, int now)
+void execute(char *command, char **args, int now)
 {
 	int stat;
 	char *st;
@@ -28,7 +28,6 @@ int execute(char *command, char **args, int now)
 			write(2, "./hsh: ", 7);
 			write(2, st, _strlen(st));
 			write(2, ": No such file or directory\n", 28);
-			fre(args);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -37,7 +36,6 @@ int execute(char *command, char **args, int now)
 		waitpid(pid, &stat, 0);
 	}
 	free(st);
-	return (stat);
 }
 /**
  * fre - free

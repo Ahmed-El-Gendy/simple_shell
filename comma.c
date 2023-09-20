@@ -10,7 +10,7 @@
 void comma(char **input, int now)
 {
 	char *input2, **args, *command;
-	int i = 0, j = 0, k = 0, stat = 0;
+	int i = 0, j = 0, k = 0;
 
 	for (j = 0; ; j++)
 	{
@@ -32,7 +32,7 @@ void comma(char **input, int now)
 			if (cmp(command, "exit"))
 			{
 				if (!convert(&args, &k))
-					fro(&command, input, &args, stat);
+					fro(&command, input, &args, 0);
 				fro(&command, input, &args, k), i = j + 1;
 				continue;
 			}
@@ -43,7 +43,7 @@ void comma(char **input, int now)
 			}
 			else
 				getpath(&command, _strlen(command));
-			stat = dish(&command, &args, &i, j, now);
+			dish(&command, &args, &i, j, now);
 		}
 		if ((*input)[j] == '\0' || (*input)[j] == '#')
 			break;
@@ -60,14 +60,12 @@ void comma(char **input, int now)
  * @now: int
  * Return: void
  */
-int dish(char **command, char ***args, int *i, int j, int now)
+void dish(char **command, char ***args, int *i, int j, int now)
 {
-	int stat = 0;
 	(*args)[0] = *command;
-	stat = execute(*command, *args, now);
+	execute(*command, *args, now);
 	fre(*args);
 	*i = j + 1;
-	return (stat);
 }
 /**
  * fro - free
