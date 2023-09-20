@@ -7,8 +7,9 @@
  * @now: int
  * Return: void
  */
-void execute(char *command, char **args, int now)
+int execute(char *command, char **args, int now)
 {
+	int stat;
 	char *st;
 	pid_t pid = fork();
 
@@ -22,17 +23,21 @@ void execute(char *command, char **args, int now)
 	}
 	if (pid == 0)
 	{
-		execve(command, args, environ);
-		write(2, "./hsh: ", 7);
-		write(2, st, _strlen(st));
-		write(2, ": No such file or directory\n", 28);
-		exit(EXIT_FAILURE);
+		if (execve(command, args, environ) == -1)
+		{
+			write(2, "./hsh: ", 7);
+			write(2, st, _strlen(st));
+			write(2, ": No such file or directory\n", 28);
+			fre(args);
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{
-		wait(NULL);
+		waitpid(pid, &stat, 0);
 	}
 	free(st);
+	return (stat);
 }
 /**
  * fre - free
