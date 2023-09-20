@@ -21,8 +21,7 @@ int main(void)
 			_puts("$ ");
 		read = getline(&input, &len, stdin);
 		input[strcspn(input, "\n")] = '\0';
-		i
-		       	(read == -1)
+		if (read == -1)
 			break;
 		if (rep(input))
 		{
