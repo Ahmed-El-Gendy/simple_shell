@@ -4,6 +4,7 @@
  * comma - to split commands
  * @input: the input
  * @now: num of line
+ * @argv: argv
  * Return: void
  */
 void comma(char **input, int now, char **argv)
@@ -25,22 +26,19 @@ void comma(char **input, int now, char **argv)
 			input2 = malloc(sizeof(char) * (j - i + 1));
 			for (k = 0; i < j; i++, k++)
 				input2[k] = (*input)[i];
-			input2[k] = '\0';
-			split(input2, &command, &args);
+			input2[k] = '\0', split(input2, &command, &args);
 			value(args, argv);
 			free(input2);
 			if (cmp(command, "exit"))
 			{
 				if (!convert(&args, &k))
 					fro(&command, input, &args, 0);
-				fro(&command, input, &args, k);
-				i = j + 1;
+				fro(&command, input, &args, k), i = j + 1;
 				continue;
 			}
 			if (con(&command, &args, now, argv))
 			{
-				fre(args);
-				i = j + 1;
+				fre(args), i = j + 1;
 				continue;
 			}
 			else
@@ -58,6 +56,8 @@ void comma(char **input, int now, char **argv)
  * @args: array
  * @i: int
  * @j: int
+ * @argv: argv
+ * @now: int
  * Return: void
  */
 void dish(char **command, char ***args, int *i, int j, char **argv, int now)

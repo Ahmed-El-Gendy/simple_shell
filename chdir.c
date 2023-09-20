@@ -6,7 +6,7 @@
  * @argv: argv
  * Return: nothing
  */
-void change_dir(char **path,int now, char **argv)
+void change_dir(char **path, int now, char **argv)
 {
 	char *arg[] = {"pwd", NULL}, buf[1024], *arr = var("PWD", argv);
 	int i = 0, j = 0, k = 0;

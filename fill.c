@@ -2,6 +2,7 @@
 /**
  * fill - fill
  * @argv: env
+ * Return: void
  */
 void fill(char ***argv)
 {
@@ -21,15 +22,17 @@ void fill(char ***argv)
 }
 /**
  * fre_argv - free
- * @argv
+ * @argv: argv
+ * Return: void
  */
 void fre_argv(char **argv)
 {
 	int i = 0;
-	 while (argv[i])
-	 {
-		 free(argv[i]);
-		 i++;
-	 }
-	 free(argv);
+
+	while (argv[i])
+	{
+		free(argv[i]);
+		i++;
+	}
+	free(argv);
 }
