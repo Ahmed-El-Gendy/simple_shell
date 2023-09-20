@@ -12,7 +12,7 @@ void execute(char *command, char **args, char **argv)
 	if (pid < 0)
 	{
 		write(2, command, _strlen(command));
-		write(2, ": fork error\n", _stlen(": fork error\n"));
+		write(2, ": fork error\n", _strlen(": fork error\n"));
 	}
 	if (pid == 0)
 	{
