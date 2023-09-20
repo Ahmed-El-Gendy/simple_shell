@@ -43,7 +43,7 @@ int con(char **command, char ***args, int now, char **argv)
 		change_dir(&(*args)[1], now, argv);
 		return (1);
 	}
-	if (!getpath((command), _strlen(*command), argv))
+	if (!getpath((command), _strlen(*command), argv, now))
 	{
 		erp(now, *command);
 		return (1);
@@ -58,9 +58,14 @@ int con(char **command, char ***args, int now, char **argv)
  */
 void erp(int now, char *command)
 {
-	now = now;
-	command = command;
-	write(2, "No such file or directory\n", strlen("No such file or directory\n"));
+	char *s = to_st(now);
+	puts(s);
+	write(2,"./hsh: ", 7);
+	write(2, s, _strlen(s));
+	write(2, ": ", 2);	
+	write(2,command, _strlen(command));
+	write(2,": Command not found\n",_strlen(": Command not found\n"));
+	free(s);
 }
 /**
  * call_env - call

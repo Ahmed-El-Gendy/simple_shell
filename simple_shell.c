@@ -16,7 +16,7 @@ int main(void)
 	fill(&argv);
 	while (1)
 	{
-		if (check)
+		if(check)
 			_puts("$ ");
 		input = malloc(1024);
 		if (fgets(input, 1024, stdin) == NULL)

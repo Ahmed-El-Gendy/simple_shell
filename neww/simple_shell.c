@@ -20,16 +20,20 @@ int main(void)
 			_puts("$ ");
 		input = our_get_line();
 		if (input == NULL)
+		{
+			if(check)
+				_puts("\n");
 			break;
+		}
 		if (rep(input))
 		{
 			free(input);
 			continue;
 		}
 		if (chec(input, now))
-			comma(&input, now, argv);
-		free(input);
+			comma(&input, &now, argv);
 		now++;
+		free(input);
 	}
 	fre_argv(argv);
 	free(input);
