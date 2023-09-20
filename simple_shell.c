@@ -12,7 +12,6 @@ int main(void)
 	int check = isatty(STDIN_FILENO);
 	int now = 1;
 
-	signal(SIGINT, SIG_IGN);
 	argv = malloc(sizeof(char *) * 250);
 	fill(&argv);
 	while (true)
