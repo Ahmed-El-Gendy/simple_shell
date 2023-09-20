@@ -21,6 +21,7 @@ int main(void)
 		input = our_get_line();
 		if (input == NULL)
 		{
+			_puts("\n");
 			break;
 		}
 		if (rep(input))
