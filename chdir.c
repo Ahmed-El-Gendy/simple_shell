@@ -8,7 +8,7 @@
  */
 void change_dir(char **path,int now, char **argv)
 {
-	char *arg[] = {"pwd", NULL}, *arr = var("PWD", argv);
+	char *arg[] = {"pwd", NULL}, buf[1024], *arr = var("PWD", argv);
 	int i = 0, j = 0, k = 0;
 	char *home = var("HOME", argv), *pre = var("OLDPWD", argv), *te;
 
@@ -36,7 +36,7 @@ void change_dir(char **path,int now, char **argv)
 	if (cmp(*path, "-"))
 	{
 		chdir(pre);
-		execute("/bin/pwd", arg, environ, now);
+		execute("/bin/pwd", arg, argv, now);
 	}
 	else if (chdir(te) != 0)
 	{

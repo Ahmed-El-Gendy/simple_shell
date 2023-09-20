@@ -20,7 +20,7 @@ void execute(char *command, char **args, char **argv, int now)
 	}
 	if (pid == 0)
 	{
-		execve(command, args, environ);
+		execve(command, args, argv);
 		write(2, "./hsh: ", 7);
 		write(2, st, _strlen(st));
 		write(2, ": No such file or directory\n", strlen(": No such file or directory\n"));
