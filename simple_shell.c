@@ -29,6 +29,8 @@ int main(void)
 			free(input);
 			continue;
 		}
+		if (cmp(input, "exit"))
+			break;
 		if (chec(input, now))
 			comma(&input, now);
 		free(input);
