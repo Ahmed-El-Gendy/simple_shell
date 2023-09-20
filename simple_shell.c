@@ -10,7 +10,8 @@ int main(void)
 {
 	char *input, **argv;
 	int check = isatty(STDIN_FILENO);
-	int now = 1;
+	int now = 1, read;
+	unsigned long int len = 0;
 
 	argv = malloc(sizeof(char *) * 250);
 	fill(&argv);
@@ -18,17 +19,15 @@ int main(void)
 	{
 		if (check)
 			_puts("$ ");
-		input = our_get_line();
-		if (input == NULL)
+		read = getline(&input, &len, stdin);
+		if (read == -1)
 			break;
 		if (rep(input))
 		{
-			free(input);
 			continue;
 		}
 		if (chec(input, now))
 			comma(&input, now, argv);
-		free(input);
 		now++;
 	}
 	fre_argv(argv);
