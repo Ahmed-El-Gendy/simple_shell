@@ -3,6 +3,8 @@
  * getpath - get the path for the file
  * @name: name of the file
  * @len: leanth of the name
+ * @argv: argv
+ * @now: now
  * Return: NULL if the file isnot found or the path if the file is found
  */
 char *getpath(char **name, int len, char **argv, int now)
@@ -10,18 +12,15 @@ char *getpath(char **name, int len, char **argv, int now)
 	int i, j, k;
 	char *token, *st, *t;
 
-	argv = argv;
-	len = len;
-	now = now;
+	argv = argv, len = len, now = now;
 	if (isfound(*name))
 		return (*name);
-	token = var("PATH", argv);
-	j = 0;
+	token = var("PATH", argv), j = 0;
 	for (i = 0; ; i++)
 	{
 		if (token[i] == ':' || token[i] == '\0')
 		{
-			st = malloc(sizeof(char) * (i-j) + 1);
+			st = malloc(sizeof(char) * (i - j) + 1);
 			for (k = 0; j < i; j++, k++)
 			{
 				st[k] = token[j];
@@ -32,8 +31,7 @@ char *getpath(char **name, int len, char **argv, int now)
 			{
 				t[k] = st[k];
 			}
-			t[k] = '/';
-			k++;
+			t[k] = '/', k++;
 			for (j = 0; j < _strlen(*name); j++, k++)
 			{
 				t[k] = (*name)[j];
@@ -41,19 +39,14 @@ char *getpath(char **name, int len, char **argv, int now)
 			t[k] = '\0';
 			if (isfound(t))
 			{
-				free(st);
-				free(*name);
-				free(token);
-				*name = t;
+				free(st), free(*name), free(token), *name = t;
 				return (*name);
 			}
-			free(st), free(t);
-			j = i + 1;
+			free(st), free(t), j = i + 1;
 		}
 		if (token[i] == '\0')
 			break;
 	}
 	free(token);
 	return (NULL);
-	
 }
