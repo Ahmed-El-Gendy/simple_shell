@@ -13,6 +13,7 @@ void execute(char *command, char **args, char **argv)
 	{
 		execve(command, args, environ);
 		write(2, "No such file or directory\n", strlen("No such file or directory\n"));
+		fre(args);
 		exit(EXIT_FAILURE);
 	}
 	else
