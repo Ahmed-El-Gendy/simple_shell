@@ -19,3 +19,4 @@ fork
 split
 exit
 putchar
+_strlen
