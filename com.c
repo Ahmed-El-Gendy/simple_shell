@@ -53,9 +53,17 @@ int con(char **command, char ***args, int now, char **argv)
  */
 void erp(int now, char *command)
 {
+	char *st;
+
+	st = tost(now);
 	now = now;
 	command = command;
-	write(2, "No such file or directory\n", strlen("No such file or directory\n"));
+	write(2, "./hsh: ",7);
+	write(2, st, _strlen(st));
+	write(2,": ",2);
+	write(2,command,_strlen(command));
+	write(2, ": not found\n", strlen(": not found\n"));
+	free(st);
 }
 /**
  * call_env - call

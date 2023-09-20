@@ -45,7 +45,7 @@ void comma(char **input, int now, char **argv)
 			}
 			else
 				getpath(&command, _strlen(command), environ);
-			dish(&command, &args, &i, j, argv);
+			dish(&command, &args, &i, j, argv, now);
 		}
 		if ((*input)[j] == '\0' || (*input)[j] == '#')
 			break;
@@ -60,11 +60,11 @@ void comma(char **input, int now, char **argv)
  * @j: int
  * Return: void
  */
-void dish(char **command, char ***args, int *i, int j, char **argv)
+void dish(char **command, char ***args, int *i, int j, char **argv, int now)
 {
 	(*args)[0] = *command;
 	argv = argv;
-	execute(*command, *args, environ);
+	execute(*command, *args, environ, now);
 	fre(*args);
 	*i = j + 1;
 }
