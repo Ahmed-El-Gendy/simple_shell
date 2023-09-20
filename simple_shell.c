@@ -22,7 +22,8 @@ int main(void)
 		read = getline(&input, &len, stdin);
 		if (read == -1)
 		{
-			_puts("\n");
+			if(check)
+				_puts("\n");
 			break;
 		}
 		if (rep(input))
