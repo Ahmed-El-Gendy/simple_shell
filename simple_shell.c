@@ -26,6 +26,7 @@ int main(void)
             free(input);
             break;
         }
+		input[strcspn(input, "\n")] = '\0';
 		if (rep(input))
 		{
 			free(input);
