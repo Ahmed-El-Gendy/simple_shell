@@ -36,14 +36,14 @@ void comma(char **input, int now, char **argv)
 					fro(&command, input, &args, 0);
 				fro(&command, input, &args, k);
 			}
-			if (con(&command, &args, now, argv))
+			if (con(&command, &args, now, environ))
 			{
 				fre(args);
 				i = j + 1;
 				continue;
 			}
 			else
-				getpath(&command, _strlen(command), argv);
+				getpath(&command, _strlen(command), environ);
 			dish(&command, &args, &i, j, argv);
 		}
 		if ((*input)[j] == '\0' || (*input)[j] == '#')
