@@ -32,7 +32,7 @@ int main(void)
 			continue;
 		}
 		if (chec(input, now))
-			comma(&input, now, argv);
+			comma(&input, &now, argv);
 		free(input);
 		now++;
 	}
