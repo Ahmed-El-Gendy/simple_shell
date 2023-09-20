@@ -21,7 +21,7 @@ char *var(char *st, char **argv)
 		for (j = 0; a[j] != '\0' && j < _strlen(st); j++)
 			test[j] = a[j];
 		test[j] = '\0';
-		if (cmp(test, st))
+		if (cmp(test, st) &&  a[j] == '=')
 		{
 			free(test);
 			re = malloc(sizeof(char) * (_strlen(a) + 1));
@@ -30,7 +30,7 @@ char *var(char *st, char **argv)
 				;
 			if (a[i] == '\0')
 			{
-				free(re);
+				free(re), free(test);
 				return (NULL);
 			}
 			i++;
