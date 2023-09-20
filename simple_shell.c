@@ -21,8 +21,7 @@ int main(void)
 	{
 		if (check)
 			_puts("saged$ ");
-		/*input = our_get_line();*/
-		read = getline(&input, &len, stdin);
+		input = our_get_line();
 		if (read == -1)
 			break;
 		if (rep(input))
