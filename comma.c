@@ -45,6 +45,8 @@ void comma(char **input, int *now, char **argv)
 			else
 				getpath(&command, _strlen(command), argv, *now);
 			dish(&command, &args, &i, j, argv, *now);
+			if ((*input)[j] == '#')
+				break;
 		}
 		if ((*input)[j] == '\0' || (*input)[j] == '#')
 			break;
