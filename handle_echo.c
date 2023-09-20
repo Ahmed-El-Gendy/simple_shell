@@ -30,7 +30,7 @@ int handle_echo(char *input, char *command, char ***args)
 		fre1(*args);
 		return (1);
 	}
-	if (input[le] == is)
+	if (input[le] == is &&(is == '\'' || is == '\"'))
 	{
 		(*args)[1] = malloc(sizeof(char) * (le - i - 1));
 		st = (*args)[1];
