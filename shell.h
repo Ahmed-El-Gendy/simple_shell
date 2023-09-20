@@ -17,7 +17,7 @@ void dish(char **command, char ***args, int *i, int j, int now);
 void fro(char **command, char **input,char ***args, int k);
 void fors(int *i, int *co, char *input);
 char *our_get_line(void);
-int comma(char **input);
+void comma(char **input, int now);
 void fre(char **args);
 void null_all(char **input, char **command, char ***args);
 int handle_echo(char *input, char *command, char ***args);
