@@ -21,3 +21,4 @@ exit
 putchar
 _strlen
 str
+ppid
