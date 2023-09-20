@@ -13,7 +13,7 @@ char *getpath(char **name, int len, char **argv)
 	len = len;
 	if (isfound(*name))
 		return (*name);
-	token = var("PATH", argv);
+	token = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
 	j = 0;
 	for (i = 0; ; i++)
 	{
@@ -39,7 +39,7 @@ char *getpath(char **name, int len, char **argv)
 			t[k] = '\0';
 			if (isfound(t))
 			{
-				free(token), free(st);
+				free(st);
 				free(*name);
 				*name = t;
 				return (*name);
@@ -48,7 +48,6 @@ char *getpath(char **name, int len, char **argv)
 			j = i + 1;
 		}
 	}
-	free(token);
 	return (NULL);
 	
 }
