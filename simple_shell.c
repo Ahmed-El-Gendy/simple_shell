@@ -25,7 +25,7 @@ int main(void)
 				_puts("\n");
             free(input);
             break;
-        }
+		}
 		if (rep(input))
 		{
 			free(input);
