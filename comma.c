@@ -7,7 +7,7 @@
  * @argv: argv
  * Return: void
  */
-int comma(char **input, int now)
+void comma(char **input, int now)
 {
 	char *input2, **args, *command;
 	int i = 0, j = 0, k = 0;
@@ -32,11 +32,7 @@ int comma(char **input, int now)
 			if (cmp(command, "exit"))
 			{
 				if (!convert(&args, &k))
-				{
-					fre(args);
-					return (0);
 					fro(&command, input, &args, 0);
-				}
 				fro(&command, input, &args, k), i = j + 1;
 				continue;
 			}
@@ -52,7 +48,6 @@ int comma(char **input, int now)
 		if ((*input)[j] == '\0' || (*input)[j] == '#')
 			break;
 	}
-	return (1);
 }
 
 /**

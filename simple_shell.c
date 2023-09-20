@@ -30,12 +30,7 @@ int main(void)
 			continue;
 		}
 		if (chec(input, now))
-		{
-			if (!comma(&input, now))
-			{
-				return (0);
-			}
-		}
+			!comma(&input, now)
 		free(input);
 		now++;
 	}
