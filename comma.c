@@ -4,10 +4,9 @@
  * comma - to split commands
  * @input: the input
  * @now: num of line
- * @argv: argv
  * Return: void
  */
-void comma(char **input, int now)
+void comma(char **input, int now, char **argv)
 {
 	char *input2, **args, *command;
 	int i = 0, j = 0, k = 0;
@@ -26,24 +25,26 @@ void comma(char **input, int now)
 			input2 = malloc(sizeof(char) * (j - i + 1));
 			for (k = 0; i < j; i++, k++)
 				input2[k] = (*input)[i];
-			input2[k] = '\0', split(input2, &command, &args);
-			value(args);
+			input2[k] = '\0';
+			split(input2, &command, &args);
+			value(args, argv);
 			free(input2);
 			if (cmp(command, "exit"))
 			{
+				fre_argv(argv);
 				if (!convert(&args, &k))
 					fro(&command, input, &args, 0);
-				fro(&command, input, &args, k), i = j + 1;
-				continue;
+				fro(&command, input, &args, k);
 			}
-			if (con(&command, &args, now))
+			if (con(&command, &args, now, argv))
 			{
-				fre(args), i = j + 1;
+				fre(args);
+				i = j + 1;
 				continue;
 			}
 			else
-				getpath(&command, _strlen(command));
-			dish(&command, &args, &i, j, now);
+				getpath(&command, _strlen(command), argv);
+			dish(&command, &args, &i, j, argv);
 		}
 		if ((*input)[j] == '\0' || (*input)[j] == '#')
 			break;
@@ -56,14 +57,12 @@ void comma(char **input, int now)
  * @args: array
  * @i: int
  * @j: int
- * @argv: argv
- * @now: int
  * Return: void
  */
-void dish(char **command, char ***args, int *i, int j, int now)
+void dish(char **command, char ***args, int *i, int j, char **argv)
 {
 	(*args)[0] = *command;
-	execute(*command, *args, now);
+	execute(*command, *args, argv);
 	fre(*args);
 	*i = j + 1;
 }
@@ -78,13 +77,6 @@ void dish(char **command, char ***args, int *i, int j, int now)
 void fro(char **command, char **input, char ***args, int k)
 {
 	command = command;
-	if (k < 0)
-	{
-		write(2, "./hsh: exit: Illegal number: ", 29);
-		write(2, (*args)[1], _strlen((*args)[1]));
-		write(2, "\n", 1);
-		return;
-	}
 	fre(*args);
 	free(*input);
 	exit(k);

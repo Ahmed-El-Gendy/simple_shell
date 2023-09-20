@@ -2,17 +2,16 @@
 /**
  * var - var
  * @st: string
- * @argv: argv
  * Return: st
  */
-char *var(char *st)
+char *var(char *st, char **argv)
 {
 	char *test = malloc(sizeof(char) * (_strlen(st) + 1)), *a, *re;
 	int i = 0, j = 0;
 
-	for (i = 0; environ[i] != NULL; i++)
+	for (i = 0; argv[i] != NULL; i++)
 	{
-		a = environ[i];
+		a = argv[i];
 		for (j = 0; a[j] != '\0' && j < _strlen(st); j++)
 			test[j] = a[j];
 		test[j] = '\0';

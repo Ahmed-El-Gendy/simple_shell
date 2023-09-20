@@ -48,8 +48,8 @@ void _puts(char *str)
 		{
 			break;
 		}
-		_putchar(str[i]);
 		fflush(stdout);
+		_putchar(str[i]);
 	}
 }
 

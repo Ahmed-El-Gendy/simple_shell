@@ -24,6 +24,6 @@ int convert(char ***args, int *res)
 	}
 	*res /= 10;
 	if (j)
-		(*res) *= -1;
+		*res *= -1;
 	return (1);
 }

@@ -3,41 +3,27 @@
  * execute - excute the program
  * @command: command
  * @args: arguments
- * @argv: argv
- * @now: int
- * Return: void
  */
-void execute(char *command, char **args, int now)
+void execute(char *command, char **args, char **argv)
 {
-	char *st;
 	pid_t pid = fork();
 
-	st = tost(now);
-	if (pid < 0)
-	{
-		write(2, "./hsh: ", 7);
-		write(2, st, _strlen(st));
-		write(2, ": fork error\n", _strlen(": fork error\n"));
-		exit(EXIT_FAILURE);
-	}
+	argv = argv;
 	if (pid == 0)
 	{
 		execve(command, args, environ);
-		write(2, "./hsh: ", 7);
-		write(2, st, _strlen(st));
-		write(2, ": No such file or directory\n", 28);
+		write(2, "No such file or directory\n", strlen("No such file or directory\n"));
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
 		wait(NULL);
 	}
-	free(st);
 }
 /**
  * fre - free
+ * @command: string
  * @args: array
- * Return: void
  */
 void fre(char **args)
 {

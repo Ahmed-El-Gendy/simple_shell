@@ -6,15 +6,17 @@
  * @argv: argv
  * Return: nothing
  */
-void change_dir(char **path, int now)
+void change_dir(char **path, int now, char **argv)
 {
-	char *arg[] = {"pwd", NULL}, *arr = var("PWD");
+	char *arg[] = {"pwd", NULL}, buf[1024], *arr = var("PWD", argv);
 	int i = 0, j = 0, k = 0;
-	char *home = var("HOME"), *pre = var("OLDPWD"), *te;
+	char *home = var("HOME", argv), *pre = var("OLDPWD", argv), *te;
 
 	if ((*path) == NULL)
 	{
 		chdir(home);
+		getcwd(buf, sizeof(buf));
+		oldpwd(argv, arr), update(argv, buf);
 		free(pre), free(home), free(arr);
 		return;
 	}
@@ -34,13 +36,15 @@ void change_dir(char **path, int now)
 	if (cmp(*path, "-"))
 	{
 		chdir(pre);
-		execute("/bin/pwd", arg, now);
+		execute("/bin/pwd", arg, environ);
 	}
 	else if (chdir(te) != 0)
 	{
 		_puts("sh: "), print_int(now), _puts("cd: can't cd to "), _puts(*path);
 		_putchar('\n');
 	}
+	getcwd(buf, sizeof(buf));
+	oldpwd(argv, arr), update(argv, buf);
 	free(te), free(home), free(arr), free(pre);
 }
 /**

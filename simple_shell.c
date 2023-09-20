@@ -2,42 +2,37 @@
 
 /**
  * main - The main function of our project
- * @ac: int
- * @av: array
- * @env: array
+ *
  * Return: always 0
  */
 
 int main(void)
 {
-	char *input;
+	char *input, **argv;
 	int check = isatty(STDIN_FILENO);
 	int now = 1;
-	long unsigned int len = 0;
-	int read;
 
+	argv = malloc(sizeof(char *) * 250);
+	fill(&argv);
 	while (true)
 	{
 		if (check)
-			write(STDOUT_FILENO, "$ ", 2);
-		read = getline(&input, &len, stdin);
-		if (read == -1)
-		{	
+			_puts("$ ");
+		input = our_get_line();
+		if (input == NULL)
 			break;
-		}
 		if (rep(input))
 		{
-			/*free(input);*/
+			free(input);
 			continue;
 		}
-		if (cmp(input, "exit"))
-			break;
 		if (chec(input, now))
-			comma(&input, now);
-		/*free(input);*/
+			comma(&input, now, argv);
+		free(input);
 		now++;
 	}
-	/*free(input);*/
+	fre_argv(argv);
+	free(input);
 	return (0);
 }
 
@@ -89,8 +84,11 @@ int chec(char *input, int now)
  */
 void ptt(int now)
 {
-	now = now;
-	perror("No such file or directory");
+	_puts("sh: ");
+	print_int(now);
+	_puts("Syntax error: \"");
+	_putchar(';');
+	_puts("\" unexpected\n");
 }
 /**
  * pt - error2
@@ -99,6 +97,10 @@ void ptt(int now)
  */
 void pt(int now)
 {
-	now = now;
-	perror("No such file or directory");
+	_puts("sh: ");
+	print_int(now);
+	_puts("Syntax error: \"");
+	_putchar(';');
+	_putchar(';');
+	_puts("\" unexpected\n");
 }

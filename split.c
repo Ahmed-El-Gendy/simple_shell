@@ -5,6 +5,7 @@
  * @input: command
  * @command: command
  * @args: arguments
+ * @now: num of line
  * Return: void
  */
 void split(char *input, char **command, char ***args)
