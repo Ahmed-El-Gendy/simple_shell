@@ -22,3 +22,4 @@ putchar
 _strlen
 str
 ppid
+getcwd
