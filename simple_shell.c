@@ -20,7 +20,9 @@ int main(void)
 		if (check)
 			_puts("$ ");
 		read = getline(&input, &len, stdin);
-		if (read == -1)
+		input[strcspn(input, "\n")] = '\0';
+		i
+		       	(read == -1)
 			break;
 		if (rep(input))
 		{
