@@ -62,7 +62,8 @@ void comma(char **input, int now, char **argv)
 void dish(char **command, char ***args, int *i, int j, char **argv)
 {
 	(*args)[0] = *command;
-	execute(*command, *args, argv);
+	argv = argv;
+	execute(*command, *args, environ);
 	fre(*args);
 	*i = j + 1;
 }
