@@ -11,9 +11,8 @@ int main(void)
 /*	signal(SIGINT, SIG_IGN);
 */
 	char *input, **argv;
-	int check = isatty(STDIN_FILENO), read;
+	int check = isatty(STDIN_FILENO);
 	int now = 1;
-	unsigned long int len;
 
 	argv = malloc(sizeof(char *) * 250);
 	fill(&argv);
@@ -22,10 +21,11 @@ int main(void)
 		if (check)
 			_puts("saged$ ");
 		input = our_get_line();
-		if (read == -1)
+		if (input == NULL)
 			break;
 		if (rep(input))
 		{
+			free(input);
 			continue;
 		}
 		if (chec(input, now))
