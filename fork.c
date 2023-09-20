@@ -8,9 +8,10 @@ void execute(char *command, char **args, char **argv)
 {
 	pid_t pid = fork();
 
+	argv = argv;
 	if (pid == 0)
 	{
-		execve(command, args, argv);
+		execve(command, args, environ);
 		write(2, "No such file or directory\n", strlen("No such file or directory\n"));
 		exit(EXIT_FAILURE);
 	}
