@@ -20,3 +20,4 @@ split
 exit
 putchar
 _strlen
+str
