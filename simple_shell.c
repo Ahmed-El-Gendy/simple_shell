@@ -19,7 +19,7 @@ int main(int ac, char **av, char **env)
 	while (true)
 	{
 		if (check)
-			_puts("$ ");
+			write(STDOUT_FILENO, "$ ", 2);
 		input = our_get_line();
 		if (input == NULL)
 			break;
