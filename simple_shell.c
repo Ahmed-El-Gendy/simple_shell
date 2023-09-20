@@ -31,7 +31,7 @@ int main(void)
 			free(input);
 			continue;
 		}
-		/*if (chec(input, now))*/
+		if (chec(input, now))
 			comma(&input, now, argv);
 		free(input);
 		now++;

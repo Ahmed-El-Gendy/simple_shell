@@ -10,7 +10,7 @@ int rep(char *input)
 
 	for (i = 0; input[i] != '\n'; i++)
 		;
-	input[i] = '\0';
+	/*input[i] = '\0';*/
 	if (_strlen(input) == 0)
 		return (1);
 	return (0);
