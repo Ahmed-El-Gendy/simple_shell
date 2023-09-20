@@ -22,7 +22,10 @@ int main(int ac, char **av, char **env)
 			write(STDOUT_FILENO, "$ ", 2);
 		input = our_get_line();
 		if (input == NULL)
+		{
+			_putchar('\n');
 			break;
+		}
 		if (rep(input))
 		{
 			free(input);
