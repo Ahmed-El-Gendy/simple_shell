@@ -3,6 +3,8 @@
  * execute - excute the program
  * @command: command
  * @args: arguments
+ * @now: now
+ * @argv: arg
  */
 void execute(char *command, char **args, char **argv, int now)
 {
@@ -13,11 +15,11 @@ void execute(char *command, char **args, char **argv, int now)
 	if (pid == 0)
 	{
 		execve(command, args, argv);
-		write(2,"./hsh: ",7 );
+		write(2, "./hsh: ", 7);
 		write(2, s, _strlen(s));
 		write(2, ": ", 2);
-		write(2,command, _strlen(command));
-		write(2,": No such file or directory\n",_strlen(": No such file or directory\n"));
+		write(2, command, _strlen(command));
+		write(2, ": No such file or directory\n", 28);
 		fre(argv);
 		fre(args);
 		free(s);
@@ -31,7 +33,6 @@ void execute(char *command, char **args, char **argv, int now)
 }
 /**
  * fre - free
- * @command: string
  * @args: array
  */
 void fre(char **args)

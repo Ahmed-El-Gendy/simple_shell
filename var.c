@@ -2,6 +2,7 @@
 /**
  * var - var
  * @st: string
+ * @argv: arg
  * Return: st
  */
 char *var(char *st, char **argv)

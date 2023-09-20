@@ -78,7 +78,7 @@ void handle_env(char **command, char ***args, int n, char **argv)
 	int i;
 
 	if (n == 1)
-		 write(2, "not found\n", 10);
+		write(2, "not found\n", 10);
 	else if (n == 2)
 	{
 		if (cmp(*command, "setenv"))
