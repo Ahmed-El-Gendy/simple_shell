@@ -19,7 +19,7 @@ int main(void)
 	while (true)
 	{
 		if (check)
-			_puts("$ ");
+			printf("$ ");
 		input = our_get_line();
 		if (input == NULL)
 			break;
