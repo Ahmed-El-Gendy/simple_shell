@@ -48,6 +48,8 @@ char *getpath(char **name, int len, char **argv)
 			free(st), free(t);
 			j = i + 1;
 		}
+		if (token[i] == '\0');
+			break;
 	}
 	return (NULL);
 	
