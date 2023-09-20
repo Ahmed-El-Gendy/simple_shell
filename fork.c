@@ -7,7 +7,7 @@
  * @now: int
  * Return: void
  */
-execute(char *command, char **args, int now, int *stat)
+void execute(char *command, char **args, int now, int *stat)
 {
 	char *st;
 	pid_t pid = fork();

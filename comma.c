@@ -35,7 +35,7 @@ void comma(char **input, int now, int *stat){
 				fro(&command, input, &args, k), i = j + 1;
 				continue;
 			}
-			if (con(&command, &args, now))
+			if (con(&command, &args, now, stat))
 			{
 				fre(args), i = j + 1;
 				continue;
