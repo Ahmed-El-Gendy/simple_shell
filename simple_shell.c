@@ -87,7 +87,7 @@ int chec(char *input, int now)
 void ptt(int now)
 {
 	now = now;
-	perror("Syntax error");
+	perror("No such file or directory");
 }
 /**
  * pt - error2
@@ -97,5 +97,5 @@ void ptt(int now)
 void pt(int now)
 {
 	now = now;
-	perror("Syntax error");
+	perror("No such file or directory");
 }
