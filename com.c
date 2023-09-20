@@ -8,7 +8,7 @@
  * @argv: argv
  * Return: 1 if true 0 if false
  */
-int con(char **command, char ***args, int now, char **argv)
+int con(char **command, char ***args, int now, char **argv, int *error)
 {
 	int n = len_args(args), i = 0, j = 0;
 
@@ -41,7 +41,7 @@ int con(char **command, char ***args, int now, char **argv)
 			_puts("erorr\n");
 			return (1);
 		}
-		change_dir(&(*args)[1], now, argv);
+		change_dir(&(*args)[1], now, argv, error);
 		return (1);
 	}
 	if (!getpath((command), _strlen(*command), argv, now))

@@ -4,9 +4,10 @@
  * @command: command
  * @args: arguments
  * @now: now
+ * @error: error value
  * @argv: arg
  */
-void execute(char *command, char **args, char **argv, int now)
+void execute(char *command, char **args, char **argv, int now, int *error)
 {
 	char *s = to_st(now);
 	pid_t pid = fork();
@@ -23,11 +24,12 @@ void execute(char *command, char **args, char **argv, int now)
 		fre(argv);
 		fre(args);
 		free(s);
-		exit(127);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		wait(NULL);
+		wait(error);
+		*error = WEXITSTATUS(*error);
 		free(s);
 	}
 }

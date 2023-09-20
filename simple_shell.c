@@ -10,7 +10,7 @@ int main(void)
 {
 	char *input, **argv;
 	int check = isatty(STDIN_FILENO);
-	int now = 1;
+	int now = 1 , error = 0;
 
 	argv = malloc(sizeof(char *) * 250);
 	fill(&argv);
@@ -32,12 +32,12 @@ int main(void)
 			continue;
 		}
 		if (chec(input, now))
-			comma(&input, &now, argv);
+			comma(&input, &now, argv, &error);
 		free(input);
 		now++;
 	}
 	fre_argv(argv);
-	return (0);
+	return (error);
 }
 
 /**
