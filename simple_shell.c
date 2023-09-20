@@ -22,9 +22,7 @@ int main(void)
 			write(STDOUT_FILENO, "$ ", 2);
 		read = getline(&input, &len, stdin);
 		if (read == -1)
-		{
-			if(check)
-				_puts("\n");
+		{	
 			break;
 		}
 		if (rep(input))
