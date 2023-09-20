@@ -19,8 +19,9 @@ int main(void)
 		if (check)
 			_puts("$ ");
 		input = malloc(1024);
-		if (fgets(input, 1024, stdin) == NULL) {
-           
+		if (fgets(input, 1024, stdin) == NULL)
+		{
+			_puts("\n");
             free(input);
             break;
         }
