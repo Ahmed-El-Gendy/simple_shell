@@ -12,7 +12,7 @@ int main(void)
 	int check = isatty(STDIN_FILENO);
 	int now = 1;
 
-	argv = malloc(sizeof(char *) * 250000);
+	argv = malloc(sizeof(char *) * 256);
 	if (argv == NULL)
 		perror("malloc");
 	fill(&argv);
