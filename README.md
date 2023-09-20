@@ -24,3 +24,4 @@ str
 ppid
 getcwd
 strtok
+string
