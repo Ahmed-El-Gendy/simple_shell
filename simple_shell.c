@@ -12,7 +12,7 @@ int main(void)
 {
 	char *input;
 	int check = isatty(STDIN_FILENO);
-	int now = 1;
+	int now = 1, stat = 0;
 
 	while (true)
 	{
@@ -32,7 +32,7 @@ int main(void)
 		if (cmp(input, "exit"))
 			break;
 		if (chec(input, now))
-			comma(&input, now);
+			comma(&input, now, &stat);
 		free(input);
 		now++;
 	}

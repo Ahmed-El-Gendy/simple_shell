@@ -7,9 +7,8 @@
  * @now: int
  * Return: void
  */
-void execute(char *command, char **args, int now)
+execute(char *command, char **args, int now, int *stat)
 {
-	int stat;
 	char *st;
 	pid_t pid = fork();
 
@@ -25,6 +24,7 @@ void execute(char *command, char **args, int now)
 	{
 		if (execve(command, args, environ) == -1)
 		{
+			fre(args);
 			write(2, "./hsh: ", 7);
 			write(2, st, _strlen(st));
 			write(2, ": No such file or directory\n", 28);
@@ -33,7 +33,7 @@ void execute(char *command, char **args, int now)
 	}
 	else
 	{
-		waitpid(pid, &stat, 0);
+		waitpid(pid, stat, 0);
 	}
 	free(st);
 }
