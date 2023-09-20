@@ -9,6 +9,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include<signal.h>
 void erp(int now, char *command);
 void pt(int now);
 char *to_st(int now);
