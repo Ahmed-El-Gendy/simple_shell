@@ -11,17 +11,17 @@ void change_dir(char **path, int now, char **argv)
 	char *arg[] = {"pwd", NULL}, buf[1024], *arr = var("PWD", argv);
 	int i = 0, j = 0, k = 0;
 	char *home = var("HOME", argv), *pre = var("OLDPWD", argv), *te;
+	char *s = to_st(now);
 
 	if ((*path) == NULL)
 	{
 		chdir(home);
 		getcwd(buf, sizeof(buf));
 		oldpwd(argv, arr), update(argv, buf);
-		free(pre), free(home), free(arr);
+		free(pre), free(home), free(arr), free(s);
 		return;
 	}
 	te = malloc(sizeof(char) * _strlen((*path) + 1));
-
 	k = _strlen((*path));
 	if ((*path)[0] == '[')
 		i++;
@@ -40,12 +40,13 @@ void change_dir(char **path, int now, char **argv)
 	}
 	else if (chdir(te) != 0)
 	{
-		_puts("sh: "), print_int(now), _puts("cd: can't cd to "), _puts(*path);
-		_putchar('\n');
+		write(2, "./hsh: ", 7), write(2, s, _strlen(s));
+		write(2, ": cd: can't cd to ", 18);
+		write(2, *path, _strlen(*path)), _putchar('\n');
 	}
 	getcwd(buf, sizeof(buf));
 	oldpwd(argv, arr), update(argv, buf);
-	free(te), free(home), free(arr), free(pre);
+	free(te), free(home), free(arr), free(pre), free(s);
 }
 /**
  * update - up

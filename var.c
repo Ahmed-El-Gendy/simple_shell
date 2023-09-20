@@ -15,9 +15,9 @@ char *var(char *st, char **argv)
 		free(test);
 		return (NULL);
 	}
-	for (i = 0; argv[i]; i++)
+	for (i = 0; environ[i]; i++)
 	{
-		a = argv[i];
+		a = environ[i];
 		for (j = 0; a[j] != '\0' && j < _strlen(st); j++)
 			test[j] = a[j];
 		test[j] = '\0';
@@ -25,12 +25,11 @@ char *var(char *st, char **argv)
 		{
 			free(test);
 			re = malloc(sizeof(char) * (_strlen(a) + 1));
-
 			for (i = 0; (a[i] != '=') && (a[i] != '\0'); i++)
 				;
 			if (a[i] == '\0')
 			{
-				free(re), free(test);
+				free(re);
 				return (NULL);
 			}
 			i++;
