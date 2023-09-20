@@ -40,7 +40,7 @@ char *getpath(char **name, int len, char **argv)
 			if (isfound(t))
 			{
 				free(token), free(st);
-				free(name);
+				free(*name);
 				*name = t;
 				return (*name);
 			}
