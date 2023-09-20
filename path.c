@@ -10,6 +10,7 @@ char *getpath(char **name, int len, char **argv)
 	int i, j, k;
 	char *token, *st, *t;
 
+	argv = argv;
 	len = len;
 	if (isfound(*name))
 		return (*name);
