@@ -66,7 +66,7 @@ void erp(int now, char *command)
 	write(2, s, _strlen(s));
 	write(2, ": ", 2);
 	write(2, command,  _strlen(command));
-	write(2, ": Command not found\n", _strlen(": Command not found\n"));
+	write(2, ": not found\n", _strlen(": not found\n"));
 	free(s);
 }
 /**
