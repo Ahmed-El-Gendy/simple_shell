@@ -8,11 +8,8 @@ int rep(char *input)
 {
 	int i;
 
-	for (i = 0; input[i] != '\0'; i++)
-	{
-		if (input[i] == '\n')
-			input[i] = ';';
-	}
+	for (i = 0; input[i] != '\n'; i++)
+		;
 	if (_strlen(input) == 0)
 		return (1);
 	return (0);
