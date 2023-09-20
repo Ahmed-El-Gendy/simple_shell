@@ -23,7 +23,7 @@ void execute(char *command, char **args, char **argv, int now)
 		fre(argv);
 		fre(args);
 		free(s);
-		exit(EXIT_FAILURE);
+		exit(127);
 	}
 	else
 	{
