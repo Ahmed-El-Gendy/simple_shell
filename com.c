@@ -23,11 +23,6 @@ int con(char **command, char ***args, int now, char **argv)
 	if (!i)
 		return (1);
 	i = 0;
-	if (cmp(*command, "setenv") || cmp(*command, "unsetenv"))
-	{
-		handle_env(command, args, n, argv);
-		return (1);
-	}
 	if (cmp(*command, "env"))
 	{
 		if (call_env(n, argv))
@@ -60,8 +55,7 @@ void erp(int now, char *command)
 {
 	now = now;
 	command = command;
-	write(2, "./hsh", 5);
-	write(2, ": No such file or directory\n", _strlen(": No such file or directory\n"));
+	write(2, "No such file or directory\n", strlen("No such file or directory\n"));
 }
 /**
  * call_env - call

@@ -28,7 +28,7 @@ void fre1(char **args);
 int len_args(char ***args);
 void assign_env(char **var, char *s1, char *s2);
 void handle_env(char **command, char ***args, int n, char **argv);
-void change_dir(char **path, int now, char **argv);
+void change_dir(char **path,int now, char **argv);
 int isfound(char *name);
 int findd(char *st1, char *st2, char **argv);
 char *getpath(char **name, int len, char **argv);

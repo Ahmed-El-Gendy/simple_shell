@@ -31,10 +31,11 @@ void comma(char **input, int now, char **argv)
 			free(input2);
 			if (cmp(command, "exit"))
 			{
-				fre_argv(argv);
 				if (!convert(&args, &k))
 					fro(&command, input, &args, 0);
 				fro(&command, input, &args, k);
+				i = j + 1;
+				continue;
 			}
 			if (con(&command, &args, now, argv))
 			{
@@ -77,6 +78,13 @@ void dish(char **command, char ***args, int *i, int j, char **argv)
 void fro(char **command, char **input, char ***args, int k)
 {
 	command = command;
+	if (k < 0)
+	{
+		write(2, "./hsh: exit: Illegal number: ", 29);
+		write(2, (*args)[1], _strlen((*args)[1]));
+		write(2, "\n", 1);
+		return;
+	}
 	fre(*args);
 	free(*input);
 	exit(k);

@@ -8,14 +8,10 @@
 
 int main(void)
 {
-	char *input, **argv;
+	char *input;
 	int check = isatty(STDIN_FILENO);
 	int now = 1;
 
-	argv = malloc(sizeof(char *) * 256);
-	if (argv == NULL)
-		perror("malloc");
-	fill(&argv);
 	while (true)
 	{
 		if (check)
@@ -29,11 +25,10 @@ int main(void)
 			continue;
 		}
 		if (chec(input, now))
-			comma(&input, now, argv);
+			comma(&input, now, environ);
 		free(input);
 		now++;
 	}
-	fre_argv(argv);
 	free(input);
 	return (0);
 }
