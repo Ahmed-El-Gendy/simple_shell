@@ -5,14 +5,16 @@
  * @len: leanth of the name
  * Return: NULL if the file isnot found or the path if the file is found
  */
-char *getpath(char **name, char **argv)
+char *getpath(char **name, int len, char **argv)
 {
 	int i, j, k;
 	char *token, *st, *t;
 
+	argv = argv;
+	len = len;
 	if (isfound(*name))
 		return (*name);
-	token = var("PATH", argv);
+	token = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
 	j = 0;
 	for (i = 0; ; i++)
 	{
@@ -46,10 +48,7 @@ char *getpath(char **name, char **argv)
 			free(st), free(t);
 			j = i + 1;
 		}
-		if (token[i] == '\0')
-			break;
 	}
-	free(token);
 	return (NULL);
 	
 }

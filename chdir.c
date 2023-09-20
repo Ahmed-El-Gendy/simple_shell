@@ -8,9 +8,9 @@
  */
 void change_dir(char **path, int now, char **argv)
 {
-	char *arg[] = {"pwd", NULL}, buf[1024], *arr = var("PWD", argv), *te;
+	char *arg[] = {"pwd", NULL}, buf[1024], *arr = var("PWD", argv);
 	int i = 0, j = 0, k = 0;
-	char *home = var("HOME", argv), *pre = var("OLDPWD", argv);
+	char *home = var("HOME", argv), *pre = var("OLDPWD", argv), *te;
 
 	if ((*path) == NULL)
 	{

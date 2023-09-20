@@ -8,8 +8,6 @@
 
 int main(void)
 {
-/*	signal(SIGINT, SIG_IGN);
-*/
 	char *input, **argv;
 	int check = isatty(STDIN_FILENO);
 	int now = 1;
@@ -19,7 +17,7 @@ int main(void)
 	while (true)
 	{
 		if (check)
-			_puts("saged$ ");
+			_puts("$ ");
 		input = our_get_line();
 		if (input == NULL)
 			break;
@@ -30,6 +28,7 @@ int main(void)
 		}
 		if (chec(input, now))
 			comma(&input, now, argv);
+		free(input);
 		now++;
 	}
 	fre_argv(argv);

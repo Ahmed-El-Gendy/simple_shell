@@ -7,14 +7,14 @@
 void value(char **args, char **argv)
 {
 	int i, j;
-	char *s, *m;
+	char *s;
 
 	for (i = 0; args[i] != NULL; i++)
 	{
 		s = args[i];
 		if (s[0] =='$')
 		{
-			m = malloc(sizeof(char) * (_strlen(s)));
+			char *m = malloc(sizeof(char) * (_strlen(s)));
 
 			for (j = 1; s[j] != '\0'; j++)
 				m[j - 1] = s[j];

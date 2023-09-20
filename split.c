@@ -8,12 +8,11 @@
  * @now: num of line
  * Return: void
  */
-void split(char *input, char **command, char ***args, int now)
+void split(char *input, char **command, char ***args)
 {
 	int arg_count, i = 0, co = 0, j;
 	char *token2;
 
-	now = now;
 	for (i = 0; input[i] == ' '; i++)
 		;
 	for (co = i; (input[co] != ' ') && (input[co] != '\0'); co++)

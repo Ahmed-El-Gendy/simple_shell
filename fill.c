@@ -13,7 +13,6 @@ void fill(char ***argv)
 		s = environ[i];
 		(*argv)[i] = malloc(sizeof(char) * (_strlen(s) + 1));
 		k = (*argv)[i];
-
 		for (j = 0; s[j] != '\0'; j++)
 			k[j] = s[j];
 		k[j] = '\0';
