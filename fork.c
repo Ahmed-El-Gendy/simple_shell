@@ -11,13 +11,13 @@ void execute(char *command, char **args, char **argv)
 	argv = argv;
 	if (pid < 0)
 	{
-		write(2, "hsh", 3);
+		write(2, "./hsh", 5);
 		write(2, ": fork error\n", _strlen(": fork error\n"));
 	}
 	if (pid == 0)
 	{
 		execve(command, args, environ);
-		write(2, "hsh", 3);
+		write(2, "./hsh", 5);
 		write(2, ": No such file or directory\n", strlen(": No such file or directory\n"));
 		exit(EXIT_FAILURE);
 	}
