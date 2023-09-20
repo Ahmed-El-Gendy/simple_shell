@@ -24,7 +24,6 @@ int main(void)
             free(input);
             break;
         }
-		printf("%s", input);
 		if (rep(input))
 		{
 			free(input);
