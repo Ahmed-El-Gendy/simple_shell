@@ -13,11 +13,13 @@ int main(void)
 	int now = 1;
 
 	argv = malloc(sizeof(char *) * 250);
+	if (argv == NULL)
+		perror("malloc");
 	fill(&argv);
 	while (true)
 	{
 		if (check)
-			_puts("$ ");
+			printf("$ ");
 		input = our_get_line();
 		if (input == NULL)
 			break;
@@ -84,11 +86,8 @@ int chec(char *input, int now)
  */
 void ptt(int now)
 {
-	_puts("sh: ");
-	print_int(now);
-	_puts("Syntax error: \"");
-	_putchar(';');
-	_puts("\" unexpected\n");
+	now = now;
+	perror("No such file or directory");
 }
 /**
  * pt - error2
@@ -97,10 +96,6 @@ void ptt(int now)
  */
 void pt(int now)
 {
-	_puts("sh: ");
-	print_int(now);
-	_puts("Syntax error: \"");
-	_putchar(';');
-	_putchar(';');
-	_puts("\" unexpected\n");
+	now = now;
+	perror("No such file or directory");
 }

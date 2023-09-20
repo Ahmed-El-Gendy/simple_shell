@@ -10,7 +10,10 @@ void execute(char *command, char **args, char **argv)
 
 	argv = argv;
 	if (pid < 0)
-		write(2,"fork\n", 5);
+	{
+		write(2, command, _strlen(command));
+		write(2, ": fork error\n", _strlen(": fork error\n"));
+	}
 	if (pid == 0)
 	{
 		execve(command, args, environ);
