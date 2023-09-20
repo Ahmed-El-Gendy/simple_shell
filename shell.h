@@ -33,7 +33,6 @@ int isfound(char *name);
 char *tost(int now);
 int findd(char *st1, char *st2, char **argv);
 char *getpath(char **name, int len, char **argv);
-extern char **environ;
 void update(char **argv, char *value);
 char *var(char *st, char **argv);
 void oldpwd(char **argv, char *value);

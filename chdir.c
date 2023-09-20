@@ -14,6 +14,8 @@ void change_dir(char **path,int now, char **argv)
 
 	if ((*path) == NULL)
 	{
+		getcwd(buf, sizeof(buf));
+		oldpwd(argv, arr), update(argv, buf);
 		chdir(home);
 		free(pre), free(home), free(arr);
 		return;
@@ -41,6 +43,8 @@ void change_dir(char **path,int now, char **argv)
 		_puts("sh: "), print_int(now), _puts("cd: can't cd to "), _puts(*path);
 		_putchar('\n');
 	}
+	getcwd(buf, sizeof(buf));
+	oldpwd(argv, arr), update(argv, buf);
 	free(te), free(home), free(arr), free(pre);
 }
 /**
