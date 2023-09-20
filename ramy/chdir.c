@@ -36,7 +36,7 @@ void change_dir(char **path, int now, char **argv)
 	if (cmp(*path, "-"))
 	{
 		chdir(pre);
-		execute("/bin/pwd", arg, argv);
+		execute("/bin/pwd", arg, environ);
 	}
 	else if (chdir(te) != 0)
 	{
