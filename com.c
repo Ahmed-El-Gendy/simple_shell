@@ -60,7 +60,7 @@ void erp(int now, char *command)
 {
 	now = now;
 	command = command;
-	write(2, "No such file or directory\n", strlen("No such file or directory\n"));
+	perror("No such file or directory");
 }
 /**
  * call_env - call
