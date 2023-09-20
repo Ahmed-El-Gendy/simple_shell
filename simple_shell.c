@@ -21,7 +21,8 @@ int main(void)
 		input = malloc(1024);
 		if (fgets(input, 1024, stdin) == NULL)
 		{
-			_puts("\n");
+			if (check)
+				_puts("\n");
             free(input);
             break;
         }
