@@ -23,7 +23,6 @@ int main(int ac, char **av, char **env)
 		input = our_get_line();
 		if (input == NULL)
 		{
-			write(STDOUT_FILENO, "\n", 1);
 			break;
 		}
 		if (rep(input))
