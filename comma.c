@@ -43,7 +43,7 @@ void comma(char **input, int now, char **argv)
 				continue;
 			}
 			else
-				getpath(&command, _strlen(command));
+				getpath(&command, argv);
 			dish(&command, &args, &i, j, argv);
 		}
 		if ((*input)[j] == '\0' || (*input)[j] == '#')
@@ -57,7 +57,7 @@ void comma(char **input, int now, char **argv)
  * @args: array
  * @i: int
  * @j: int
- * Return: void
+ * Returni: void
  */
 void dish(char **command, char ***args, int *i, int j, char **argv)
 {

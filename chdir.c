@@ -8,7 +8,7 @@
  */
 void change_dir(char **path, int now, char **argv)
 {
-	char *arg[] = {"pwd", NULL}, buf[1024], *arr = var("PWD", argv);
+	char *arg[] = {"pwd", NULL}, buf[1024], *arr = var("PWD", argv), *te;
 	int i = 0, j = 0, k = 0;
 	char *home = var("HOME", argv), *pre = var("OLDPWD", argv);
 
@@ -20,7 +20,7 @@ void change_dir(char **path, int now, char **argv)
 		free(pre), free(home), free(arr);
 		return;
 	}
-	char *te = malloc(sizeof(char) * _strlen((*path) + 1));
+	te = malloc(sizeof(char) * _strlen((*path) + 1));
 
 	k = _strlen((*path));
 	if ((*path)[0] == '[')

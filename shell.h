@@ -31,7 +31,7 @@ void handle_env(char **command, char ***args, int n, char **argv);
 void change_dir(char **path, int now, char **argv);
 int isfound(char *name);
 int findd(char *st1, char *st2, char **argv);
-char *getpath(char **name, int len);
+char *getpath(char **name, char **argv);
 extern char **environ;
 void update(char **argv, char *value);
 char *var(char *st, char **argv);

@@ -8,13 +8,11 @@
 
 int main(void)
 {
-	signal(SIGINT, SIG_IGN);
-
-	char *input = NULL;
-	struct stat s;
+/*	signal(SIGINT, SIG_IGN);
+*/
+	char *input, **argv;
 	int check = isatty(STDIN_FILENO), read;
 	int now = 1;
-	char **argv;
 	unsigned long int len;
 
 	argv = malloc(sizeof(char *) * 250);

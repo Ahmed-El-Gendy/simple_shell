@@ -43,7 +43,7 @@ int con(char **command, char ***args, int now, char **argv)
 		change_dir(&(*args)[1], now, argv);
 		return (1);
 	}
-	if (!getpath((command), _strlen(*command)))
+	if (!getpath((command), argv))
 	{
 		erp(now, *command);
 		return (1);

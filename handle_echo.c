@@ -10,8 +10,8 @@
 
 int handle_echo(char *input, char *command, char ***args)
 {
-	int arg_count, i = 0, co = 0, j = 0, le, k;
-	char *token = NULL, is;
+	int i = 0, co = 0, j = 0, le, k;
+	char is, *st;
 
 	fors(&i, &co, input);
 	*args = (char **)malloc(sizeof(char *) * 2);
@@ -33,7 +33,7 @@ int handle_echo(char *input, char *command, char ***args)
 	if (input[le] == is)
 	{
 		(*args)[1] = malloc(sizeof(char) * (le - i - 1));
-		char *st = (*args)[1];
+		st = (*args)[1];
 
 		for (j = i + 1, k = 0; j < le; j++, k++)
 			st[k] = input[j];

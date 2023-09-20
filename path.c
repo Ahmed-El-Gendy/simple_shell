@@ -5,41 +5,51 @@
  * @len: leanth of the name
  * Return: NULL if the file isnot found or the path if the file is found
  */
-char *getpath(char **name, int len)
+char *getpath(char **name, char **argv)
 {
-	char test1[len + 5];
-	char test2[len + 9];
-	int i;
-	char *path;
+	int i, j, k;
+	char *token, *st, *t;
 
 	if (isfound(*name))
 		return (*name);
-	 _strcpy(test1, "/bin/");
-	for (i = 5; i < len + 5; i++)
+	token = var("PATH", argv);
+	j = 0;
+	for (i = 0; ; i++)
 	{
-		test1[i] = (*name)[i - 5];
+		if (token[i] == ':' || token[i] == '\0')
+		{
+			st = malloc(sizeof(char) * (i-j) + 1);
+			for (k = 0; j < i; j++, k++)
+			{
+				st[k] = token[j];
+			}
+			st[k] = '\0';
+			t = malloc(sizeof(char) * (_strlen(st) + _strlen(*name)) + 2);
+			for (k = 0; k < _strlen(st); k++)
+			{
+				t[k] = st[k];
+			}
+			t[k] = '/';
+			k++;
+			for (j = 0; j < _strlen(*name); j++, k++)
+			{
+				t[k] = (*name)[j];
+			}
+			t[k] = '\0';
+			if (isfound(t))
+			{
+				free(st);
+				free(*name);
+				*name = t;
+				return (*name);
+			}
+			free(st), free(t);
+			j = i + 1;
+		}
+		if (token[i] == '\0')
+			break;
 	}
-	test1[i] = '\0';
-	if (isfound(test1))
-	{
-		free(*name);
-		*name = malloc(sizeof(char) * i);
-		for (i = 0; test1[i] != '\0'; i++)
-			(*name)[i] = test1[i];
-		(*name)[i] = '\0';
-		return (*name);
-	}
-	_strcpy(test2, "/usr/bin/");
-	for (i = 9; i <= 9 + len; i++)
-		test2[i] = (*name)[i - 9];
-	if (isfound(test2))
-	{
-		free(*name);
-		*name = malloc(sizeof(char) * i);
-		for (i = 0; test2[i] != '\0'; i++)
-			path[i] = test2[i];
-		path[i] = '\0';
-		return (*name);
-	}
+	free(token);
 	return (NULL);
+	
 }

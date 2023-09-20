@@ -8,6 +8,7 @@ void execute(char *command, char **args, char **argv)
 {
 	pid_t pid = fork();
 
+	command = command;
 	if (pid == 0)
 	{
 		execve(command, args, argv);
@@ -28,6 +29,7 @@ void fre(char *command, char **args)
 {
 	int i = 0;
 
+	command = command;
 	if (!args)
 		return;
 	while (args[i])
