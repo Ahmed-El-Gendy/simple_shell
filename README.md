@@ -18,3 +18,4 @@ execute
 fork
 split
 exit
+putchar
