@@ -13,7 +13,8 @@ int main(void)
 	char *input;
 	int check = isatty(STDIN_FILENO);
 	int now = 1;
-	ssize_t len = 0, read;
+	long unsigned int len = 0;
+	int read;
 
 	while (true)
 	{
