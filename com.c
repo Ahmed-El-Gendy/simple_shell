@@ -5,6 +5,7 @@
  * @command: commad
  * @args: args
  * @now: num of line
+ * @argv: argv
  * Return: 1 if true 0 if false
  */
 int con(char **command, char ***args, int now)
@@ -49,6 +50,7 @@ int con(char **command, char ***args, int now)
 /**
  * erp - error
  * @now: int
+ * @command: command
  * Return: void
  */
 void erp(int now, char *command)
@@ -58,10 +60,10 @@ void erp(int now, char *command)
 	st = tost(now);
 	now = now;
 	command = command;
-	write(2, "./hsh: ",7);
+	write(2, "./hsh: ", 7);
 	write(2, st, _strlen(st));
-	write(2,": ",2);
-	write(2,command,_strlen(command));
+	write(2, ": ", 2);
+	write(2, command, _strlen(command));
 	write(2, ": not found\n", strlen(": not found\n"));
 	free(st);
 }

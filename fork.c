@@ -3,6 +3,9 @@
  * execute - excute the program
  * @command: command
  * @args: arguments
+ * @argv: argv
+ * @now: int
+ * Return: void
  */
 void execute(char *command, char **args, int now)
 {
@@ -22,7 +25,7 @@ void execute(char *command, char **args, int now)
 		execve(command, args, environ);
 		write(2, "./hsh: ", 7);
 		write(2, st, _strlen(st));
-		write(2, ": No such file or directory\n", strlen(": No such file or directory\n"));
+		write(2, ": No such file or directory\n", 28);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -33,8 +36,8 @@ void execute(char *command, char **args, int now)
 }
 /**
  * fre - free
- * @command: string
  * @args: array
+ * Return: void
  */
 void fre(char **args)
 {

@@ -2,7 +2,9 @@
 
 /**
  * main - The main function of our project
- *
+ * @ac: int
+ * @av: array
+ * @env: array
  * Return: always 0
  */
 
@@ -15,10 +17,12 @@ int main(void)
 	while (true)
 	{
 		if (check)
-			_puts("$ ");
+			write(STDOUT_FILENO, "$ ", 2);
 		input = our_get_line();
 		if (input == NULL)
+		{
 			break;
+		}
 		if (rep(input))
 		{
 			free(input);

@@ -1,6 +1,6 @@
 #include"shell.h"
 /**
- * to_st
+ * tost - to int
  * @now: now
  * Return: st
  */
@@ -10,7 +10,7 @@ char *tost(int now)
 	int i = 0, j;
 
 	st = malloc(sizeof(char) * 20);
-	while(now != 0)
+	while (now != 0)
 	{
 		st[i] = (now % 10) + '0';
 		i++;
@@ -22,5 +22,5 @@ char *tost(int now)
 		str[i] = st[j];
 	str[i] = '\0';
 	free(st);
-	return(str);
+	return (str);
 }
