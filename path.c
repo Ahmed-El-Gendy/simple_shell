@@ -10,6 +10,7 @@ char *getpath(char **name, int len, char **argv)
 	int i, j, k;
 	char *token, *st, *t;
 
+	len = len;
 	if (isfound(*name))
 		return (*name);
 	token = var("PATH", argv);
@@ -18,7 +19,7 @@ char *getpath(char **name, int len, char **argv)
 	{
 		if (token[i] == ':' || token[i] == '\0')
 		{
-			st = malloc(sizeof(char) * (i-j) + 2);
+			st = malloc(sizeof(char) * (i-j) + 1);
 			for (k = 0; j < i; j++, k++)
 			{
 				st[k] = token[j];
