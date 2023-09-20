@@ -26,13 +26,12 @@ int main(void)
             free(input);
             break;
         }
-		input[strcspn(input, "\n")] = '\0';
 		if (rep(input))
 		{
 			free(input);
 			continue;
 		}
-		if (chec(input, now))
+		/*if (chec(input, now))*/
 			comma(&input, now, argv);
 		free(input);
 		now++;
