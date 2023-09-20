@@ -12,7 +12,7 @@ void execute(char *command, char **args, char **argv, int now)
 	argv = argv;
 	if (pid == 0)
 	{
-		execve(command, args, environ);
+		execve(command, args, argv);
 		write(2,"./hsh: ",7 );
 		write(2, s, _strlen(s));
 		write(2, ": ", 2);
