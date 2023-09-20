@@ -9,6 +9,8 @@ void execute(char *command, char **args, char **argv)
 	pid_t pid = fork();
 
 	argv = argv;
+	if (pid < 0)
+		write(2,"fork\n", 5);
 	if (pid == 0)
 	{
 		execve(command, args, environ);
