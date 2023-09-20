@@ -16,6 +16,7 @@ void execute(char *command, char **args, char **argv, int now)
 		write(2, "./hsh: ", 7);
 		write(2, st, _strlen(st));
 		write(2, ": fork error\n", _strlen(": fork error\n"));
+		exit(EXIT_FAILURE);
 	}
 	if (pid == 0)
 	{
