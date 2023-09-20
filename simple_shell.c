@@ -12,14 +12,14 @@ int main(void)
 	int check = isatty(STDIN_FILENO);
 	int now = 1;
 
-	argv = malloc(sizeof(char *) * 2500);
+	argv = malloc(sizeof(char *) * 250000);
 	if (argv == NULL)
 		perror("malloc");
 	fill(&argv);
 	while (true)
 	{
 		if (check)
-			printf("$ ");
+			_puts("$ ");
 		input = our_get_line();
 		if (input == NULL)
 			break;
