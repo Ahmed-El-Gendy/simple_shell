@@ -14,13 +14,17 @@ int main(void)
 
 	argv = malloc(sizeof(char *) * 250);
 	fill(&argv);
-	while (true)
+	while (1)
 	{
 		if (check)
 			_puts("$ ");
-		input = our_get_line();
-		if (input == NULL)
-			break;
+		input = malloc(1024);
+		if (fgets(input, 1024, stdin) == NULL) {
+           
+            free(input);
+            break;
+        }
+		printf("%s", input);
 		if (rep(input))
 		{
 			free(input);
@@ -32,7 +36,6 @@ int main(void)
 		now++;
 	}
 	fre_argv(argv);
-	free(input);
 	return (0);
 }
 
