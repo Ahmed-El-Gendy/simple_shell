@@ -10,7 +10,7 @@ char *to_st(int now)
 	int i = 0, j;
 
 	st = malloc(sizeof(char) * 20);
-	while(now != 0)
+	while (now != 0)
 	{
 		st[i] = (now % 10) + '0';
 		now /= 10;

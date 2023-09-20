@@ -12,7 +12,7 @@ void value(char **args, char **argv)
 	for (i = 0; args[i] != NULL; i++)
 	{
 		s = args[i];
-		if (s[0] =='$')
+		if (s[0] == '$')
 		{
 			char *m = malloc(sizeof(char) * (_strlen(s)));
 

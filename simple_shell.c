@@ -23,8 +23,8 @@ int main(void)
 		{
 			if (check)
 				_puts("\n");
-            free(input);
-            break;
+			free(input);
+			break;
 		}
 		if (rep(input))
 		{

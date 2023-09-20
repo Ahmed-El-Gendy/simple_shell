@@ -5,6 +5,7 @@
  * @command: commad
  * @args: args
  * @now: num of line
+ * @argv: argv
  * Return: 1 if true 0 if false
  */
 int con(char **command, char ***args, int now, char **argv)
@@ -54,17 +55,18 @@ int con(char **command, char ***args, int now, char **argv)
 /**
  * erp - error
  * @now: int
+ * @command: com
  * Return: void
  */
 void erp(int now, char *command)
 {
 	char *s = to_st(now);
 
-	write(2,"./hsh: ", 7);
+	write(2, "./hsh: ", 7);
 	write(2, s, _strlen(s));
-	write(2, ": ", 2);	
-	write(2,command, _strlen(command));
-	write(2,": Command not found\n",_strlen(": Command not found\n"));
+	write(2, ": ", 2);
+	write(2, command,  _strlen(command));
+	write(2, ": Command not found\n", _strlen(": Command not found\n"));
 	free(s);
 }
 /**
@@ -79,7 +81,7 @@ int call_env(int n, char **argv)
 
 	if (n == 1)
 	{
-		for (i = 0 ; argv[i] != NULL; i++)
+		for (i = 0; argv[i] != NULL; i++)
 		{
 			_puts(argv[i]);
 			_putchar('\n');
