@@ -13,30 +13,33 @@ int main(void)
 	char *input;
 	int check = isatty(STDIN_FILENO);
 	int now = 1;
+	ssize_t len = 0, read;
 
 	while (true)
 	{
 		if (check)
 			write(STDOUT_FILENO, "$ ", 2);
-		input = our_get_line();
-		if (input == NULL)
+		read = getline(&input, &len, stdin);
+		if (read == -1)
 		{
 			_puts("\n");
 			break;
 		}
 		if (rep(input))
 		{
-			free(input);
+			/*free(input);*/
 			continue;
 		}
 		if (cmp(input, "exit"))
 			break;
+		_puts(input);
+		_puts("\n");
 		if (chec(input, now))
 			comma(&input, now);
-		free(input);
+		/*free(input);*/
 		now++;
 	}
-	free(input);
+	/*free(input);*/
 	return (0);
 }
 

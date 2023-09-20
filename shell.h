@@ -51,4 +51,5 @@ char *_strcpy(char *dest, char *src);
 char *_strncat(char *dest, char *src, int n);
 int cmp(char *input1, char *input2);
 void print_int(int n);
+char *get_echo();
 #endif
