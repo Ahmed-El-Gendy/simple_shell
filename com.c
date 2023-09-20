@@ -59,7 +59,7 @@ int con(char **command, char ***args, int now, char **argv)
 void erp(int now, char *command)
 {
 	char *s = to_st(now);
-	puts(s);
+
 	write(2,"./hsh: ", 7);
 	write(2, s, _strlen(s));
 	write(2, ": ", 2);	
