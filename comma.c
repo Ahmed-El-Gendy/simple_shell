@@ -42,7 +42,7 @@ void comma(char **input, int *now, char **argv)
 			}
 			else
 				getpath(&command, _strlen(command), argv, *now);
-			dish(&args, &i, j, argv, *now, *input);
+			d(command, args, &i, j, argv, *now, *input);
 			if ((*input)[j] == '#')
 				break;
 		}
@@ -52,19 +52,21 @@ void comma(char **input, int *now, char **argv)
 }
 
 /**
- * dish - to free lines
+ * d - to free lines
+ * @command: string
  * @args: array
  * @i: int
  * @j: int
  * @argv: argv
- * @now: now
- * @input: input
+ * @n: now
+ * @p: p
  * Return: void
  */
-void dish(char ***args, int *i, int j, char **argv, int now, char *input)
+void d(char *command, char **args, int *i, int j, char **argv, int n, char *p)
 {
-	execute(*args[0], *args, argv, now, input);
-	fre(*args);
+	args[0] = command;
+	execute(command, args, argv, n, p);
+	fre(args);
 	*i = j + 1;
 }
 /**

@@ -4,12 +4,12 @@
  * con - to continue if condition found
  * @command: commad
  * @args: args
- * @input: input
  * @now: num of line
  * @argv: argv
+ * @p: p
  * Return: 1 if true 0 if false
  */
-int con(char **command, char ***args, int now, char **argv, char *input)
+int con(char **command, char ***args, int now, char **argv, char *p)
 {
 	int n = len_args(args), i = 0, j = 0;
 
@@ -39,10 +39,10 @@ int con(char **command, char ***args, int now, char **argv, char *input)
 	{
 		if (n > 2)
 		{
-			write(2, "to many arguments\n", 18);
+			_puts("erorr\n");
 			return (1);
 		}
-		change_dir(&(*args)[1], now, argv, input);
+		change_dir(&(*args)[1], now, argv, p);
 		return (1);
 	}
 	if (!getpath((command), _strlen(*command), argv, now))
