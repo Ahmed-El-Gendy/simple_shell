@@ -4,9 +4,10 @@
  * @path: path of the dir
  * @now: num of line
  * @argv: argv
+ * @input: input
  * Return: nothing
  */
-void change_dir(char **path, int now, char **argv)
+void change_dir(char **path, int now, char **argv, char *input)
 {
 	char *arg[] = {"pwd", NULL}, buf[1024], *arr = var("PWD", argv);
 	int i = 0, j = 0, k = 0;
@@ -36,7 +37,7 @@ void change_dir(char **path, int now, char **argv)
 	if (cmp(*path, "-"))
 	{
 		chdir(pre);
-		execute("/bin/pwd", arg, argv, now);
+		execute("/bin/pwd", arg, argv, now, input);
 	}
 	else if (chdir(te) != 0)
 	{

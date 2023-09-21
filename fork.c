@@ -4,9 +4,10 @@
  * @command: command
  * @args: arguments
  * @now: now
+ * @input: input
  * @argv: arg
  */
-void execute(char *command, char **args, char **argv, int now)
+void execute(char *command, char **args, char **argv, int now, char *input)
 {
 	char *s = to_st(now);
 	pid_t pid = fork();
@@ -14,13 +15,14 @@ void execute(char *command, char **args, char **argv, int now)
 	argv = argv;
 	if (pid == 0)
 	{
-		execve(command, args, argv);
+		free(input);
+		fre(argv);
+		execve(command, args, environ);
 		write(2, "./hsh: ", 7);
 		write(2, s, _strlen(s));
 		write(2, ": ", 2);
 		write(2, command, _strlen(command));
 		write(2, ": No such file or directory\n", 28);
-		fre(argv);
 		fre(args);
 		free(s);
 		exit(127);
