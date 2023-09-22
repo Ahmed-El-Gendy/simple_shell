@@ -9,11 +9,11 @@
  */
 void change_dir(char **path, int now, char **argv, char *p)
 {
-	char *arg[] = {"pwd", NULL}, buf[1024], *arr = var("PWD", argv);
-	int i = 0, j = 0, k = 0;
-	char *home = var("HOME", argv), *pre = var("OLDPWD", argv), *te;
-	char *s = to_st(now);
+	char buf[1024], *arr = var("PWD", argv);
+	char *home = var("HOME", argv), *pre = var("OLDPWD", argv);
+	char *s = to_st(now), *te;
 
+	p = p;
 	if ((*path) == NULL)
 	{
 		chdir(home);
@@ -22,32 +22,23 @@ void change_dir(char **path, int now, char **argv, char *p)
 		free(pre), free(home), free(arr), free(s);
 		return;
 	}
-	te = malloc(sizeof(char) * _strlen((*path) + 1));
-	k = _strlen((*path));
-	if ((*path)[0] == '[')
-		i++;
-	if ((*path)[_strlen(*path) - 1] == ']')
-		k--;
-	for (j = 0; i < k; i++)
-	{
-		te[j] = (*path)[i];
-		j++;
-	}
-	te[j] = '\0';
 	if (cmp(*path, "-"))
 	{
 		chdir(pre);
-		execute("/bin/pwd", arg, argv, now, p);
+		te = var("PWD", argv);
+		_puts(te);
+		_putchar('\n');
+		free(te);
 	}
-	else if (chdir(te) != 0)
+	else if (chdir((*path)) != 0)
 	{
 		write(2, "./hsh: ", 7), write(2, s, _strlen(s));
 		write(2, ": cd: can't cd to ", 18);
-		write(2, *path, _strlen(*path)), _putchar('\n');
+		write(2, *path, _strlen(*path)), write(2, "\n", 1);
 	}
 	getcwd(buf, sizeof(buf));
 	oldpwd(argv, arr), update(argv, buf);
-	free(te), free(home), free(arr), free(pre), free(s);
+	free(home), free(arr), free(pre), free(s);
 }
 /**
  * update - up
@@ -56,7 +47,7 @@ void change_dir(char **path, int now, char **argv, char *p)
  */
 void update(char **argv, char *value)
 {
-	char *new = malloc(sizeof(char) * (_strlen(value) + 1));
+	char *new = malloc(sizeof(char) * (_strlen(value) + 5));
 	char *s;
 	int i, j;
 
@@ -88,7 +79,7 @@ void update(char **argv, char *value)
  */
 void oldpwd(char **argv, char *value)
 {
-	char *new = malloc(sizeof(char) * (_strlen(value) + 1));
+	char *new = malloc(sizeof(char) * (_strlen(value) + 8));
 	char *s;
 	int i, j;
 
