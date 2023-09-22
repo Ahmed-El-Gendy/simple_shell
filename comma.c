@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * comma - to split commands
- * @input: the input
- * @now: num of linei
- * @argv: argv
- * @st: stat
+ * comma - to split commands and handle (;) case
+ * @input: pointer to the input as string
+ * @now: numper of the line we reach for error
+ * @argv: enviroment
+ * @st: status
  * Return: void
  */
 void comma(char **input, int *now, char **argv, int *st)
@@ -58,10 +58,10 @@ void comma(char **input, int *now, char **argv, int *st)
  * @args: array
  * @i: int
  * @j: int
- * @argv: argv
+ * @argv: enviroment
  * @n: now
  * @p: p
- * Return: void
+ * Return: the exit statue
  */
 int d(char *command, char **args, int *i, int j, char **argv, int n, char *p)
 {
@@ -80,7 +80,7 @@ int d(char *command, char **args, int *i, int j, char **argv, int n, char *p)
  * @k: int
  * @now: now
  * @st: st
- * @argv: arg
+ * @argv: enviroment
  * Return: void
  */
 void fro(char **input, char ***args, int k, int now, int *st, char **argv)
