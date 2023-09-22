@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * print_int - print integers
- * @n: numper
+ * print_int - Print integer using putchar
+ * @n: The numper
  * Return: void
  */
 void print_int(int n)
