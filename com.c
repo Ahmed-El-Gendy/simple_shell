@@ -37,11 +37,6 @@ int con(char **command, char ***args, int now, char **argv, char *p)
 	}
 	if (cmp(*command, "cd"))
 	{
-		if (n > 2)
-		{
-			_puts("erorr\n");
-			return (1);
-		}
 		change_dir(&(*args)[1], now, argv, p);
 		return (1);
 	}

@@ -124,15 +124,18 @@ void handle_env(char **command, char ***args, int n, char **argv)
 
 int findd(char *st1, char *st2, char **argv)
 {
-	char *s = malloc(sizeof(char) * _strlen(st1));
+	char *s = malloc(sizeof(char) * (_strlen(st1) + 2 + _strlen(st2)));
 	char *cl;
 	int i, j, c = 0;
 
+	if (s == NULL)
+		return (0);
 	for (i = 0; argv[i] != NULL; i++)
 	{
 		cl = argv[i];
 		for (j = 0; j < _strlen(st1) && cl[j] != '\0'; j++)
 			s[j] = cl[j];
+		s[j] = '\0';
 		if (cmp(s, st1))
 		{
 			s[j] = '=';
