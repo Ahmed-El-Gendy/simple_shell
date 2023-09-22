@@ -10,7 +10,7 @@
  */
 int execute(char *command, char **args, char **argv, int now, char *p)
 {
-	char *s = to_st(now);
+	char *s;
 	int st;
 	pid_t pid = fork();
 
@@ -20,6 +20,7 @@ int execute(char *command, char **args, char **argv, int now, char *p)
 		fre(argv);
 		free(p);
 		execve(command, args, environ);
+		s = to_st(now);
 		write(2, "./hsh: ", 7);
 		write(2, s, _strlen(s));
 		write(2, ": ", 2);
@@ -32,7 +33,6 @@ int execute(char *command, char **args, char **argv, int now, char *p)
 	else
 	{
 		waitpid(pid, &st, 0);
-		free(s);
 	}
 	return (WEXITSTATUS(st));
 }
