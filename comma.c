@@ -93,8 +93,10 @@ void fro(char **input, char ***args, int k, int now, int *st, char **argv)
 		write(2, ": exit: Illegal number: ", _strlen(": exit: Illegal number: "));
 		write(2, (*args)[1], _strlen((*args)[1]));
 		*st = 2;
+		free(s);
 		return;
 	}
+	free(s);
 	fre_argv(argv);
 	fre(*args);
 	free(*input);
