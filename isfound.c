@@ -1,8 +1,8 @@
 #include"shell.h"
 /**
- * isfound - is the file found
+ * isfound - to check if the file found
  * @name: file name
- * Return: 1 if is found 0 if is not found
+ * Return: 1 if is found 0 if isn't found
  */
 int isfound(char *name)
 {
