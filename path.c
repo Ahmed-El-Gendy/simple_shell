@@ -1,11 +1,11 @@
 #include"shell.h"
 /**
- * getpath - get the path for the file
- * @name: name of the file
- * @len: leanth of the name
- * @argv: argv
+ * getpath - Get the path for the file
+ * @name: Name of the file
+ * @len: The leanth of the name
+ * @argv: environ
  * @now: now
- * Return: NULL if the file isnot found or the path if the file is found
+ * Return: NULL if the file isn't found or the path if the file is found
  */
 char *getpath(char **name, int len, char **argv, int now)
 {
