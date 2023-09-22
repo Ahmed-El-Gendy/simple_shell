@@ -33,7 +33,8 @@ void comma(char **input, int *now, char **argv, int *st)
 			{
 				if (!convert(&args, &k))
 					fro(input, &args, *st, *now, st, argv);
-				fro(input, &args, k, *now, st, argv);
+				fro(input, &args, k, *now, st, argv), fre(args), i = j + 1;
+				continue;
 			}
 			if (con(&command, &args, *now, argv, *input))
 			{
@@ -92,6 +93,7 @@ void fro(char **input, char ***args, int k, int now, int *st, char **argv)
 		write(2, s, _strlen(s));
 		write(2, ": exit: Illegal number: ", _strlen(": exit: Illegal number: "));
 		write(2, (*args)[1], _strlen((*args)[1]));
+		write(2, "\n", 1);
 		*st = 2;
 		free(s);
 		return;
