@@ -16,7 +16,7 @@ char *to_st(int now);
 void ptt(int now);
 int chec(char *input, int now);
 int d(char *command, char **args, int *i, int j, char **argv, int n, char *p);
-void fro(char **command, char **input, char ***args, int k);
+void fro(char **input, char ***args, int k, int now, int *st, char **argv);
 void fors(int *i, int *co, char *input);
 char *our_get_line(void);
 void comma(char **input, int *now, char **argv, int *st);

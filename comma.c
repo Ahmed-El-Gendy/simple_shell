@@ -31,10 +31,9 @@ void comma(char **input, int *now, char **argv, int *st)
 			split(input2, &command, &args), value(args, argv), free(input2);
 			if (cmp(command, "exit"))
 			{
-				fre_argv(argv);
 				if (!convert(&args, &k))
-					fro(&command, input, &args, *st);
-				fro(&command, input, &args, k);
+					fre_argv(argv), fro(input, &args, *st, *now, st, argv);
+				fro(input, &args, k, *now, st, argv);
 			}
 			if (con(&command, &args, *now, argv, *input))
 			{
@@ -75,15 +74,28 @@ int d(char *command, char **args, int *i, int j, char **argv, int n, char *p)
 }
 /**
  * fro - free
- * @command: string
  * @args: array
  * @input: string
  * @k: int
+ * @now: now
+ * @st: st
+ * @argv: arg
  * Return: void
  */
-void fro(char **command, char **input, char ***args, int k)
+void fro(char **input, char ***args, int k, int now, int *st, char **argv)
 {
-	command = command;
+	char *s = to_st(now);
+
+	if (k < 0)
+	{
+		write(2, "./hsh: ", 7);
+		write(2, s, _strlen(s));
+		write(2, ": exit: Illegal number: ", _strlen(": exit: Illegal number: "));
+		write(2, (*args)[1], _strlen((*args)[1]));
+		*st = 2;
+		return;
+	}
+	fre_argv(argv);
 	fre(*args);
 	free(*input);
 	exit(k);
