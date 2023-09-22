@@ -32,7 +32,7 @@ void comma(char **input, int *now, char **argv, int *st)
 			if (cmp(command, "exit"))
 			{
 				if (!convert(&args, &k))
-					fre_argv(argv), fro(input, &args, *st, *now, st, argv);
+					fro(input, &args, *st, *now, st, argv);
 				fro(input, &args, k, *now, st, argv);
 			}
 			if (con(&command, &args, *now, argv, *input))
