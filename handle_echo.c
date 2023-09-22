@@ -78,3 +78,19 @@ void fors(int *i, int *co, char *input)
 	for (*i = *co; input[*i] == ' ' && input[(*i)] != '\0'; (*i)++)
 		;
 }
+/**
+ * pr_error - print
+ * @command: com
+ * @now: now
+ */
+void pr_error(char *command, int now)
+{
+	char *s = to_st(now);
+
+	write(2, "./hsh: ", 7);
+	write(2, s, _strlen(s));
+	write(2, ": ", 2);
+	write(2, command, _strlen(command));
+	write(2, ": not found\n ", _strlen(": not found\n "));
+	free(s);
+}

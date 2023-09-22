@@ -27,7 +27,7 @@ int con(char **command, char ***args, int now, char **argv, char *p)
 	i = 0;
 	if (cmp(*command, "setenv") || cmp(*command, "unsetenv"))
 	{
-		handle_env(command, args, n, argv);
+		handle_env(command, args, n, argv, now);
 		return (1);
 	}
 	if (cmp(*command, "env"))

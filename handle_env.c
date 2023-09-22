@@ -71,19 +71,20 @@ void assign_env(char **var, char *s1, char *s2)
  * @n: number of element
  * @argv: argv
  * @command: command
+ * @now: now
  */
-void handle_env(char **command, char ***args, int n, char **argv)
+void handle_env(char **command, char ***args, int n, char **argv, int now)
 {
 	char *var;
 	int i;
 
 	if (n == 1)
-		write(2, "not found\n", 10);
+		pr_error(*command, now);
 	else if (n == 2)
 	{
 		if (cmp(*command, "setenv"))
 		{
-			write(2, "not found\n", 10);
+			pr_error(*command, now);
 			return;
 		}
 		unset_env((*args)[1], argv);
@@ -93,7 +94,7 @@ void handle_env(char **command, char ***args, int n, char **argv)
 	{
 		if (cmp(*command, "usetenv"))
 		{
-			write(2, "not found\n", 10);
+			pr_error(*command, now);
 			return;
 		}
 		var = malloc(sizeof(char) * (_strlen((*args)[1]) + _strlen((*args)[2]) + 2));
@@ -111,7 +112,7 @@ void handle_env(char **command, char ***args, int n, char **argv)
 		return;
 	}
 	else
-		write(2, "not found\n", 10);
+		pr_error(*command, now);
 }
 
 /**
