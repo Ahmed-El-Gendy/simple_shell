@@ -5,7 +5,7 @@
  * @now: num of line
  * @argv: argv
  * @p: p
- * Return: nothing
+ * Return: void
  */
 void change_dir(char **path, int now, char **argv, char *p)
 {
@@ -41,9 +41,10 @@ void change_dir(char **path, int now, char **argv, char *p)
 	free(home), free(arr), free(pre), free(s);
 }
 /**
- * update - up
- * @argv: env
- * @value: va
+ * update - update
+ * @argv: enviroment
+ * @value: value
+ * Return: void
  */
 void update(char **argv, char *value)
 {
