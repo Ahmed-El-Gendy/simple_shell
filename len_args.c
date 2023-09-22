@@ -1,6 +1,6 @@
 #include"shell.h"
 /**
- * len_args - len
+ * len_args - The length of arguments
  * @args: array of strings
  * Return: number of elements
  */
