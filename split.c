@@ -38,7 +38,7 @@ void split(char *input, char **command, char ***args)
 			break;
 		for (i = 0; input[i + co] != ' ' && input[i + co] != '\0'; i++)
 			;
-		(*args)[arg_count] = malloc(sizeof(char) * i);
+		(*args)[arg_count] = malloc(sizeof(char) * (i + 1));
 		token2 = (*args)[arg_count];
 
 		for (j = 0; input[co] != ' ' && input[co] != '\0'; co++, j++)
