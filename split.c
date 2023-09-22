@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * split - to split the input to command and args
- * @input: command
- * @command: command
+ * split - To split the input to command and arguments
+ * @input: The input
+ * @command: The command
  * @args: arguments
  * Return: void
  */
