@@ -20,7 +20,7 @@ void comma(char **input, int *now, char **argv, int *st)
 			if (j == i)
 			{
 				i = j + 1;
-				if ((*input)[j] == '\0')
+				if ((*input)[j] == '\0' || (*input)[j] == '#')
 					break;
 				continue;
 			}
@@ -39,16 +39,14 @@ void comma(char **input, int *now, char **argv, int *st)
 			if (con(&command, &args, *now, argv, *input))
 			{
 				fre(args), i = j + 1;
+				if ((*input)[j] == '\0' || (*input)[j] == '#')
+					break;
 				continue;
 			}
 			else
 				getpath(&command, _strlen(command), argv, *now);
 			*st = d(command, args, &i, j, argv, *now, *input);
-			if ((*input)[j] == '#')
-				break;
 		}
-		if ((*input)[j] == '\0' || (*input)[j] == '#')
-			break;
 	}
 }
 
