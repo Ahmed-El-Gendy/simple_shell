@@ -5,9 +5,10 @@
  * @input: the input
  * @now: num of linei
  * @argv: argv
+ * @st: stat
  * Return: void
  */
-void comma(char **input, int *now, char **argv)
+void comma(char **input, int *now, char **argv, int *st)
 {
 	char *input2, **args, *command;
 	int i = 0, j = 0, k = 0;
@@ -32,7 +33,7 @@ void comma(char **input, int *now, char **argv)
 			{
 				fre_argv(argv);
 				if (!convert(&args, &k))
-					fro(&command, input, &args, 0);
+					fro(&command, input, &args, *st);
 				fro(&command, input, &args, k);
 			}
 			if (con(&command, &args, *now, argv, *input))
@@ -42,7 +43,7 @@ void comma(char **input, int *now, char **argv)
 			}
 			else
 				getpath(&command, _strlen(command), argv, *now);
-			d(command, args, &i, j, argv, *now, *input);
+			*st = d(command, args, &i, j, argv, *now, *input);
 			if ((*input)[j] == '#')
 				break;
 		}
@@ -62,12 +63,15 @@ void comma(char **input, int *now, char **argv)
  * @p: p
  * Return: void
  */
-void d(char *command, char **args, int *i, int j, char **argv, int n, char *p)
+int d(char *command, char **args, int *i, int j, char **argv, int n, char *p)
 {
+	int st;
+
 	args[0] = command;
-	execute(command, args, argv, n, p);
+	st = execute(command, args, argv, n, p);
 	fre(args);
 	*i = j + 1;
+	return (st);
 }
 /**
  * fro - free
