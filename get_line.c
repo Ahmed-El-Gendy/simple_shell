@@ -2,7 +2,7 @@
 
 /**
  * our_get_line - get line function using read
- * Return: string
+ * Return: the input as get line function
  */
 
 char *our_get_line(void)
